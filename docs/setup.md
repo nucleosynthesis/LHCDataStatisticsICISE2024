@@ -31,3 +31,17 @@ To restart the combine container, open a terminal and enter
 ```bash
 docker start -i cms_combine
 ```
+
+## Jupyter Notebooks    
+
+As much as possible, we will use Juptyer notebooks to write and run code for these exercises. You can launch JupterLab from either of the two containers by using the following command inside the terminal after starting the container. 
+
+```bash
+jupyter lab --ip 0.0.0.0 --port XXXX --no-browser
+```
+
+where `XXXX` should be `8888` for the python container, and `8889` for the combine container. The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. You should see something like the following for example when launching JupyterLab from the combine container, 
+
+![Example JupyterLab](images/example_JL.jpg)
+
+From here, we can open a new terminal, text file or notebook. 

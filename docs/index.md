@@ -6,6 +6,7 @@ hide:
 # INTRODUCTION
 
 This is the webpage for the lecture series on Data Analysis and Statistics at the LHC. In these pages, you can find links to the lectures as well as exercises for you to explore a typical data analysis at CMS. 
+You should be familiar with simple programming in Python, however, the examples should give you enough information to produce the desired output even if you don't know much Python.  
 
 ## Useful Links 
 
