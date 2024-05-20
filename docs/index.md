@@ -1,6 +1,5 @@
 ---
 hide:
- - navigation
  - toc
 ---
 
@@ -19,4 +18,4 @@ You can find more useful information about the software we will be using below
 
 ## About the Author
 
-Dr. Nicholas Wardle is a lecturer in Physics at Imperial College London. He is also a member of the CMS Collaboration and his research is focused on statistical methods for data analysis and searches for BSM physics through precision measurements of Higgs boson properties. 
+[Dr. Nicholas Wardle](https://www.imperial.ac.uk/people/n.wardle09/) is a lecturer in Physics at Imperial College London. He is also a member of the CMS Collaboration and his research is focused on statistical methods for data analysis and searches for BSM physics through precision measurements of Higgs boson properties. 

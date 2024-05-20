@@ -5,10 +5,11 @@ edit_uri: edit/main/docs
 
 nav:
   - Home: index.md
+  - Getting started: setup.md
 
 #theme: cosmo
 #theme: united
-theme: lumen
+theme: material
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
