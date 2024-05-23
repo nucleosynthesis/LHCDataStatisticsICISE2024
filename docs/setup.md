@@ -7,12 +7,12 @@ Once you have the docker desktop installed, make sure it is running and get the 
 ## Python environment for CMS Open Data datasets 
 
 ```bash
-docker run -it --name cms_python -P -p 5901:5901 -p 6080:6080 -p 8888:8888 -v ${HOME}/cms_open_data_python:/code gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
+docker run -it --name cms_python -P -p 8888:8888 -v ${HOME}/cms_open_data_python:/code gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
 ```
 
 Now that you're inside the container, run the following to get all of the necessary scripts and install some additional packages. 
 ```bash
-pip install vector hist mplhep coffea==0.7.21 cabinetry
+pip install vector coffea==0.7.21
 ```
 
 
@@ -44,4 +44,8 @@ where `XXXX` should be `8888` for the python container, and `8889` for the combi
 
 ![Example JupyterLab](images/example_JL.jpg)
 
-From here, we can open a new terminal, text file or notebook. 
+From here, we can open a new terminal, text file or notebook. Since our data structures will be mostly Pandas dataframes, you might want to install the Jupyter spreadsheet editor that allows you to both view and edit CSV files, 
+```bash
+pip install jupyterlab-spreadsheet-editor
+```
+You can do this in both of the containers but you don't need to install this for the exercises. 

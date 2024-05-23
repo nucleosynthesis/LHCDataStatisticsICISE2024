@@ -6,6 +6,8 @@ edit_uri: edit/main/docs
 nav:
   - Home: index.md
   - Getting started: setup.md
+  - Exercises:
+    - "Exercise 1": day1.md
 
 #theme: cosmo
 #theme: united
@@ -13,6 +15,7 @@ theme:
   name: material
   features:
     - content.code.copy
+    - navigation.footer
   palette:
     primary: "deep orange"
     accent: "light orange"
