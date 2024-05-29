@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -156,18 +156,6 @@
 </div>
     
     
-      <div class="md-header__source">
-        <a href="https://github.com/LHCDataStatisticsICISE2024/Website" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-      </div>
-    
   </nav>
   
 </header>
@@ -201,18 +189,6 @@
     </a>
     LHCDataStatisticsICISE2024
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/LHCDataStatisticsICISE2024/Website" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -453,38 +429,38 @@
                 
                   
 
-  
-  
-
 
 <h1 id="setup">Setup</h1>
 <p>To complete these exercises, we will be using two container images, with the software installed for you. In the examples here, we will use <a href="https://www.docker.com/">docker</a> to run the images. The docker desktop is available for mac, windows and linux so follow the link and download the right installation for your personal laptop. </p>
 <p>Once you have the docker desktop installed, make sure it is running and get the two containers that we'll need for the exercises using the terminal commands below. Note that the docker desktop has its own terminal if you prefer to use that one. </p>
 <h2 id="python-environment-for-cms-open-data-datasets">Python environment for CMS Open Data datasets</h2>
-<pre><code class="language-bash">docker run -it --name cms_python -P -p 8888:8888 -v ${HOME}/cms_open_data_python:/code gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
-</code></pre>
-<p>Now that you're inside the container, run the following to get all of the necessary scripts and install some additional packages. </p>
-<pre><code class="language-bash">pip install vector coffea==0.7.21
-</code></pre>
-<p>To restart the python container, open a terminal and enter </p>
-<pre><code class="language-bash">docker start -i cms_python
-</code></pre>
+<p>Obtain the <code>cms_python</code> container using, </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>cms_python<span class="w"> </span>-P<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/cms_open_data_python:/code<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
+</span></code></pre></div>
+<p>Now that you're inside the container, run the following to get all of the necessary scripts and install some additional packages. 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>vector<span class="w"> </span><span class="nv">coffea</span><span class="o">==</span><span class="m">0</span>.7.21
+</span></code></pre></div></p>
+<p>You can exit the container at any time by typing <code>exit</code> in the terminal. To restart the python container, open a terminal and enter 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_python
+</span></code></pre></div></p>
 <h2 id="combine-package-for-statistical-analysis">Combine package for statistical analysis</h2>
-<pre><code class="language-bash">docker run -p 127.0.0.1:8889:8889 --name cms_combine -it gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1
-</code></pre>
-<p>To restart the combine container, open a terminal and enter </p>
-<pre><code class="language-bash">docker start -i cms_combine
-</code></pre>
+<p>Obtain the <code>cms_combine</code> container using, </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:8889:8889<span class="w"> </span>--name<span class="w"> </span>cms_combine<span class="w"> </span>-it<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1
+</span></code></pre></div>
+<p>You can exit the container at any time by typing <code>exit</code> in the terminal. 
+To restart the combine container, open a terminal and enter 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
+</span></code></pre></div></p>
 <h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
 <p>As much as possible, we will use Juptyer notebooks to write and run code for these exercises. You can launch JupterLab from either of the two containers by using the following command inside the terminal after starting the container. </p>
-<pre><code class="language-bash">jupyter lab --ip 0.0.0.0 --port XXXX --no-browser
-</code></pre>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span>XXXX<span class="w"> </span>--no-browser
+</span></code></pre></div>
 <p>where <code>XXXX</code> should be <code>8888</code> for the python container, and <code>8889</code> for the combine container. The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. You should see something like the following for example when launching JupyterLab from the combine container, </p>
 <p><img alt="Example JupyterLab" src="../images/example_JL.jpg" /></p>
-<p>From here, we can open a new terminal, text file or notebook. Since our data structures will be mostly Pandas dataframes, you might want to install the Jupyter spreadsheet editor that allows you to both view and edit CSV files, </p>
-<pre><code class="language-bash">pip install jupyterlab-spreadsheet-editor
-</code></pre>
-<p>You can do this in both of the containers but you don't need to install this for the exercises. </p>
+<p>From here, we can open a new terminal, text file or notebook. Since our data structures will be mostly Pandas dataframes, you might want to install the Jupyter spreadsheet editor that allows you to both view and edit CSV files, 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab-spreadsheet-editor
+</span></code></pre></div>
+You can do this in both of the containers but you don't need to install this for the exercises. </p>
 
 
 
