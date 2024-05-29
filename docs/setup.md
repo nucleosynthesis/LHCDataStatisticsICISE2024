@@ -6,6 +6,9 @@ Once you have the docker desktop installed, make sure it is running and get the 
 
 ## Python environment for CMS Open Data datasets 
 
+Obtain the `cms_python` container using, 
+
+
 ```bash
 docker run -it --name cms_python -P -p 8888:8888 -v ${HOME}/cms_open_data_python:/code gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
 ```
@@ -15,18 +18,20 @@ Now that you're inside the container, run the following to get all of the necess
 pip install vector coffea==0.7.21
 ```
 
-
-To restart the python container, open a terminal and enter 
+You can exit the container at any time by typing `exit` in the terminal. To restart the python container, open a terminal and enter 
 ```bash
 docker start -i cms_python
 ```
 
 ## Combine package for statistical analysis
 
+Obtain the `cms_combine` container using, 
+
 ```bash
 docker run -p 127.0.0.1:8889:8889 --name cms_combine -it gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1
 ```
 
+You can exit the container at any time by typing `exit` in the terminal. 
 To restart the combine container, open a terminal and enter 
 ```bash
 docker start -i cms_combine
