@@ -30,7 +30,7 @@ Now you can start the JupyterLab server by running
 jupyter lab --ip 0.0.0.0 --port 8888 --no-browser
 ```
 
-The output will give you a link (starting with `http://`) that you can paste into your preferred internet browser to open the JuypterLab session. Create a new Python 3 notebook - icon that says *Python 3 (ipykernel)* - and give it a name by clicking at the top where it says "Untitled.ipynb". We will use this notebook to issue commands to process the data. 
+The output will give you a link (starting with `http://`) that you can paste into your preferred internet browser to open the JuypterLab session. Create a new Python 3 notebook - icon that says *Python 3 (ipykernel)* - and give it a name by right clicking in the file browser at the left panel where it says "Untitled.ipynb". We will use this notebook to issue commands to process the data. 
 
 You can create new cells in the notebook by using the "+" icon at the top. The code that is entered in each cell can be run by either clicking the play icon at the top or by selecting the cell and pressing **Shift + Enter** on your keyboard. Jupyter notebooks are a great way of editing code and displaying output all in one place! 
 
@@ -182,7 +182,7 @@ selected_electrons = events.electron[(events.electron.pt > 30) & (abs(events.ele
 
 ```python
 selected_muons = events.muon[(events.muon.pt > 30) & (abs(events.muon.eta)<2.1) & (events.muon.isTight == True) & (events.muon.sip3d < 4) & (events.muon.pfreliso04DBCorr < 0.15)]
-selected_jets = events.jet[(events.jet.corrpt > 30) & (abs(events.jet.eta)<2.4) & ]
+selected_jets = events.jet[(events.jet.corrpt > 30) & (abs(events.jet.eta)<2.4) ]
 ```
 </details>
 
@@ -215,7 +215,7 @@ print(len(event_filters))
 The reason is that this object now contains a boolean flag, one for each event, that indicates whether or not the event satisfies all of the criteria that we used to define the filter. To actually select the events that pass this filter, we just apply the filter to one of our selected object collections. For example, to obtain the collection of jets from all of the events that pass our selection, we can do, 
 
 ```python
-selected_events = selected_jets[region_filter]
+selected_events = selected_jets[events_filter]
 ```
 
 As a final step, we want to plot some observable in our events that can separate the signal from the various backgrounds. Choosing observables often requires a lot of thought as physicists as there are several things we want to consider 
@@ -290,13 +290,19 @@ $$
 L_{eff}  =  N_{gen}/\sigma
 $$
 
+Often, there is a filtering step in either the MC generation or in the skimming step - we don't always manage to process all of the samples. It's important to account for this by scaling up the number of generated events by this filter efficiency $\epsilon$. So our formula changes to 
+
+$$
+L_{eff}  =  \frac{1}{\epsilon}\cdot N_{gen}/\sigma
+$$
+
 The event weight for a particular sample will therefore be the ratio of the integrated luminosity of our real data to the effective luminosity of the sample, 
 
 $$
-w = L_{int}/L_{eff}
+w = L_{int}/L_{eff} =L_{int}\cdot \epsilon\cdot \sigma/N_{gen} 
 $$
 
-Have a look again inside the `ntuples.json` file. You will find that the file contains the total number of events for each sample - `nevts_total` -  (this is the number generated) and the cross-section in $pb$ - `xsec` - for that sample. You can read in this data using the code below, 
+Have a look again inside the `ntuples.json` file. You will find that the file contains the number of events for each file in each sample - `nevts` -  (this is the number generated and processed to make that file), the filter efficiency for the sample (`filter_eff`) and the cross-section in $pb$ - `xsec` for that sample. You can read in this data using the code below, 
 
 ```python
 import json
@@ -305,16 +311,16 @@ with open('ntuples.json', 'r') as f:
 ```
 From this information, you can now calculate the event weight for each of the simulated samples. Our integrated luminosity for this 2015 data is 2256.38 $pb$. 
 !!! Question
-    Write a function to calculate the event weight (`getEventWeight`) for a given simulated sample, using the metadat from `ntuples.json`.  
+    Write a function to calculate the event weight (`getEventWeight`) for a given simulated sample, using the metadata from `ntuples.json`.  
 
 <details>
 <summary><b>Show answer</b></summary>
 
 ```python
-def getEventWeight(sample):
+def getEventWeight(sample,file_index):
     lumi = 2256.38 # inv pb 
     if sample != "data":
-        xsec_weight = metadata[sample]['xsec'] * lumi / metadata[sample]['nominal']['nevts_total']
+        xsec_weight = metadata[sample]['filter_eff'] * metadata[sample]['xsec'] * lumi / metadata[sample]['nominal'][file_index]['nevts']
     else:
         xsec_weight = 1
     return xsec_weight
@@ -355,8 +361,9 @@ dfs = histogramToDataframe(weights[0],"signalregion","ttbar")
 
 Since we haven't included the event weights when making the histogram, we will multiply the column `sum_w` by this weight. 
 ```
-dfs['sum_w']*=getXSWeight('ttbar')
-dfs['sum_ww']*=getXSWeight('ttbar')*getXSWeight('ttbar')
+event_weight  = getEventWeight('ttbar',0) # the weight needed when using only the first file 
+dfs['sum_w']  *= event_weight 
+dfs['sum_ww'] *= event_weight*event_weight
 ```
 
 Note that there is also a column in our dataframe called `sum_ww` that we have multiplied by the square of the event weight. This column is the *variance* of the bin contents due to the limited number of MC simulated events available. We'll discuss more about this column in later exercises. 
@@ -367,11 +374,47 @@ dfs.to_csv('histograms.csv',index=False)
 ```
 And you'll now see a file called `histograms.csv` in your file browser. 
 
-!!! Question
-    In this exercise, we only ran our selection and created a histogram for one of the files for one of our simulated processes. We should run the same selection over all of the simulated files and for the data too! Write some code that will run over all of the simulated sample files and all of the data files too. Remember, 
+## Full analysis 
 
-    1. Only look at the `nominal` samples for now. We'll look at the other ones for `ttbar` later. 
+In this exercise, we only ran our selection and created a histogram for one of the files for one of our simulated processes. We should run the same selection over all of the simulated files and for the data too!
+
+!!! Question
+     Write some code that will run over all of the simulated sample files and all of the data files too. Remember, 
+
+    1. Only look at the `nominal` samples. 
     2. Make a separate histogram for each of the different processes and for the data. Each simulated sample will have its own event weight that you'll need to calculate. 
     3. You can save all of the histograms to the same `.csv` file or you can save them in separate files.
 
     This may take some time so you should get some working code and then you may need to let the commands run for a couple of hours - maybe leave it running over dinner or even overnight. 
+
+    Feel free to choose your own binning for your observable or you could even choose a different observable to the one we calculated in the example above! You might even try saving different histograms with different binnings/observables so that you can see what difference this makes for the statistical analysis later. 
+
+    Please try to write your own code before looking at the answer provided. 
+
+!!! Warning 
+    You may find that sometimes you will see an `IOError` due to XRootD failing to access the remote files. This can be annoying so I recommend that you split up the task across different cells and that you wrap the command to open the file with a `try` `except` block similar to, 
+    ```python
+    input_file = "root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/Run2015D_SingleMuon_flat/07FC2CD2-106C-4419-9260-12B3E271C345_flat.root"
+    try: 
+        events = NanoEventsFactory.from_root(input_file, schemaclass=AGCSchema, treepath='events').events()
+    except OSError:
+        time.sleep(2) # sleep for 2 seconds and try one more time
+        try: 
+            events = NanoEventsFactory.from_root(input_file, schemaclass=AGCSchema, treepath='events').events()
+        except OSError:
+            time.sleep(2) # sleep for 2 seconds just to not try EOS again but give up on this file now
+            return []
+    ```
+    This will try to access a file twice before giving up and returning an empty list.
+    
+    Remember, if you don't access the full set of files, you should recalculate the integrated luminosity (you can assume that the new integrated luminosity scales with the number of events accessed) and modify the function to calculate the event weight to account for missing simulated events. 
+
+
+/// details | Show answer
+I have uploaded a Jupyter notebook that will perform the full analysis on the samples called `FullAnalysis.ipynb`in the `ttbarAnalysis` folder. If you really get stuck, have a look at this notebook to see how to run our object and event selection, calculate the observable and save the histograms for all of the samples. 
+
+The notebook will produce a plot similar to the one below,
+
+![mbjj_signal](images/mbjj_signalregion.png)
+///
+

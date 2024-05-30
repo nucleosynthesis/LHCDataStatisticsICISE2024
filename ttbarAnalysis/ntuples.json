@@ -492,6 +492,7 @@
     },
     "ttbar": {
         "xsec": 831.76,
+        "filter_eff": 0.2104,
         "nominal": {
             "files": [
                 {
@@ -1068,6 +1069,7 @@
     },
     "single_atop_t_chan": {
         "xsec": 26.38,
+        "filter_eff": 0.32259, 
         "nominal": {
             "files": [
                 {
@@ -1080,6 +1082,7 @@
     },
     "single_top_t_chan": {
         "xsec": 44.33,
+        "filter_eff": 0.302207,
         "nominal": {
             "files": [
                 {
@@ -1131,7 +1134,8 @@
         }
     },
     "single_top_tW": {
-        "xsec": 35.6,
+        "xsec": 71.2,
+        "filter_eff": 0.2252,
         "nominal": {
             "files": [
                 {
@@ -1148,6 +1152,7 @@
     },
     "wjets": {
         "xsec": 61526.7,
+        "filter_eff": 0.1939,
         "nominal": {
             "files": [
                 {
