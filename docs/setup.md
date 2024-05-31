@@ -47,7 +47,7 @@ docker start -i cms_combine
 As much as possible, we will use Juptyer notebooks to write and run code for these exercises. You can launch JupterLab from either of the two containers by using the following command inside the terminal after starting the container. 
 
 ```bash
-jupyter lab --ip 0.0.0.0 --port XXXX --no-browser [--allow-root]
+jupyter lab --ip 0.0.0.0 --port XXXX --no-browser
 ```
 
 where `XXXX` should be `8888` for the python container, and `8889` for the combine container. 
