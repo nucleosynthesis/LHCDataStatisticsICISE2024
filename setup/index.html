@@ -46,6 +46,8 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -364,6 +366,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -465,25 +488,28 @@
 <p>Obtain the <code>cms_combine</code> container using, </p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:8889:8889<span class="w"> </span>--name<span class="w"> </span>cms_combine<span class="w"> </span>-it<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1
 </span></code></pre></div>
+<p>If you like to make plots with python instead of using ROOT, then you should also install <code>matplotlib</code> inside this container by running the following command in the terminal inside the container. 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip install matplotlib 
+</span></code></pre></div></p>
 <p>You can exit the container at any time by typing <code>exit</code> in the terminal. 
 To restart the combine container, open a terminal and enter 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
 </span></code></pre></div></p>
 <h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
 <p>As much as possible, we will use Juptyer notebooks to write and run code for these exercises. You can launch JupterLab from either of the two containers by using the following command inside the terminal after starting the container. </p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span>XXXX<span class="w"> </span>--no-browser<span class="w"> </span><span class="o">[</span>--allow-root<span class="o">]</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span>XXXX<span class="w"> </span>--no-browser<span class="w"> </span><span class="o">[</span>--allow-root<span class="o">]</span>
 </span></code></pre></div>
 <p>where <code>XXXX</code> should be <code>8888</code> for the python container, and <code>8889</code> for the combine container. </p>
 <p>The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. You should see something like the following for example when launching JupyterLab from the combine container, </p>
 <p><img alt="Example JupyterLab" src="../images/example_JL.jpg" /></p>
 <p>From here, we can open a new terminal, text file or notebook. On the left you can see a file browser that shows all of the files contained in the container. You can modify/copy/delete these using the file browser by right clicking on them.</p>
 <p>Since our data structures will be mostly Pandas dataframes, you might want to install the Jupyter spreadsheet editor that allows you to both view and edit CSV files, 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab-spreadsheet-editor
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab-spreadsheet-editor
 </span></code></pre></div>
 You can do this in both of the containers but you don't need to install this for the exercises. </p>
 <h2 id="moving-files-around">Moving files around</h2>
 <p>From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "downlowd") or you can use the <code>docker cp</code> tool. For example to transfer a file called "myfile.txt" from your local desktop to the <code>cms_python</code> container, you can run, </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker cp ~/Desktop/myfile.txt cms_python:/code/
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker cp ~/Desktop/myfile.txt cms_python:/code/
 </span></code></pre></div>
 <p>in a terminal on your local machine. You can also copy files from the containers to your local machine by reversing the order of the locations in the command above. </p>
 

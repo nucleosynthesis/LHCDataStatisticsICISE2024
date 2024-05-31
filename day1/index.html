@@ -12,6 +12,8 @@
         <link rel="prev" href="../setup/">
       
       
+        <link rel="next" href="../day2/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
@@ -43,6 +45,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -397,6 +401,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -732,6 +757,10 @@ First, we need to remove the array structure of the events so that we can use th
 </span></code></pre></div>
 </details>
 
+<div class="admonition tip">
+<p class="admonition-title">Challenge</p>
+<p>In the original CMS paper, the observable used was the invariant mass of the b-jet and the lepton (electron or muon) - <span class="arithmatex"><span class="MathJax_Preview">m_{bl}</span><script type="math/tex">m_{bl}</script></span>. For the case where there is more than 1 b-jet in particular the <em>minimum</em> such mass from all pairings of b-jet with the lepton is used. Create this observable for the selected events and plot a histogram of it for our ttbar sample. </p>
+</div>
 <p>As this sample is simulation, we need to apply proper event weights to account for the cross-section in the standard model. Remember that the number of events expected is given by the product of the cross-section and the integrated luminosity. For simulated samples, if we know the cross-section <span class="arithmatex"><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span> and the number of events generated <span class="arithmatex"><span class="MathJax_Preview">N_{gen}</span><script type="math/tex">N_{gen}</script></span>, we can calculate the <em>effective luminosity</em> of the simulated sample as, </p>
 <div class="arithmatex">
 <div class="MathJax_Preview">
@@ -898,6 +927,22 @@ This will try to access a file twice before giving up and returning an empty lis
             </div>
           </a>
         
+        
+          
+          <a href="../day2/" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise 2">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise 2
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
