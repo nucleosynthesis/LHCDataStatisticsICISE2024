@@ -258,6 +258,7 @@ trijet_pt = trijet["p4"][ak.argmax(trijet.p4.pt, axis=1, keepdims=True)].pt
 ```
 </details>
 
+
 ## Histograms and saving output 
 
 Now that we have our event observable, we can see what the distribution looks like for these events. 
@@ -283,6 +284,9 @@ We see a peak close to the top mass (~175 GeV) as expected! The resolution of je
 plt.hist(observablept,bins=np.arange(0,300,25))
 ```
 </details>
+
+!!! tip "Challenge"
+    In the original CMS paper, the observable used was the invariant mass of the b-jet and the lepton (electron or muon) - $m_{bl}$. For the case where there is more than 1 b-jet in particular the *minimum* such mass from all pairings of b-jet with the lepton is used. Create this observable for the selected events and plot a histogram of it for our ttbar sample. 
 
 As this sample is simulation, we need to apply proper event weights to account for the cross-section in the standard model. Remember that the number of events expected is given by the product of the cross-section and the integrated luminosity. For simulated samples, if we know the cross-section $\sigma$ and the number of events generated $N_{gen}$, we can calculate the *effective luminosity* of the simulated sample as, 
 

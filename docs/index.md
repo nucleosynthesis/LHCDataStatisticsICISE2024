@@ -18,6 +18,9 @@ There are four sets of exercises in these pages that you can find under the Exer
 The answer will be shown here
 </details>
 
+!!! tip "Challenge"
+    If you are feeling especially confident, you can have a go at extra challenges that I have put in these turquoise boxes. I won't provide a solution for these challenges, but you don't need to complete them to progress through the other exercises. 
+
 !!! Warning 
     Sometimes, there will be some technical or conceptual hurdle that requires a bit of careful thought to work around. I have tried to point these out to you in orange boxes like this one to help avoid any major road blocks. 
 

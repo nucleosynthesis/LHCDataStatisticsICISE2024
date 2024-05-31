@@ -31,6 +31,11 @@ Obtain the `cms_combine` container using,
 docker run -p 127.0.0.1:8889:8889 --name cms_combine -it gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1
 ```
 
+If you like to make plots with python instead of using ROOT, then you should also install `matplotlib` inside this container by running the following command in the terminal inside the container. 
+```
+pip install matplotlib 
+```
+
 You can exit the container at any time by typing `exit` in the terminal. 
 To restart the combine container, open a terminal and enter 
 ```bash

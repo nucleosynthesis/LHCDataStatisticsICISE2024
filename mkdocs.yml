@@ -6,6 +6,7 @@ nav:
   - Getting started: setup.md
   - Exercises:
     - "Exercise 1": day1.md
+    - "Exercise 2": day2.md
 
 #theme: cosmo
 #theme: united
@@ -17,6 +18,9 @@ theme:
   palette:
     primary: "deep orange"
     accent: "light orange"
+    
+extra_css:
+  - stylesheets/extra.css
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
