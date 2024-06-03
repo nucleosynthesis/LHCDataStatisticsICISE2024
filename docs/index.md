@@ -8,6 +8,8 @@ hide:
 This is the webpage for the lecture series on Data Analysis and Statistics at the LHC. In these pages, you can find links to the lectures as well as exercises for you to explore a typical data analysis at CMS. 
 You should be familiar with simple programming in Python, however, the examples should give you enough information to produce the desired output even if you don't know much Python. 
 
+You should start by downloading the Docker desktop for your laptop (click [here](https://www.docker.com/)). You will need to setup an account to do so. Follow the instructions for setting up the software that we'll be using at the [Getting started](https://nucleosynthesis.github.io/LHCDataStatisticsICISE2024/setup/) tab. This can take some time so please do this before the start of the lecture course. 
+
 There are four sets of exercises in these pages that you can find under the Exercises tab, one for each day of the course. You should read through the information given and copy code/commands where prompted into your own terminal or notebook. 
 
 !!! Question
