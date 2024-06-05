@@ -1,6 +1,8 @@
 import ROOT 
 import numpy as np 
 
+# Funtion to read data_obs TGraphAsymmErrors from fitDiagnostics.root
+# convert to [x],[y],[eyL],[eyU]
 def readData(g):
   retX = []
   retY = []
@@ -15,6 +17,8 @@ def readData(g):
 
   return np.array(retX),np.array(retY),np.array(retYL),np.array(retYU)
 
+# Funtion to read TH1F from fitDiagnostics.root
+# convert to [x],[y],[ey]
 def readHist(h):
 
   retX = []
@@ -30,6 +34,8 @@ def readHist(h):
   
   return np.array(retX),np.array(retY),np.array(errY)
 
+# Funtion to Loop through folder (channel) in fitDiagnostics.root
+# returns dictionary with data, total and list of samples from folder
 def getHistogramCountsAndData(folder):
     total = readHist(folder.Get("total"))
     data  = readData(folder.Get("data"))
@@ -49,3 +55,14 @@ def getHistogramCountsAndData(folder):
             histograms['samples'].append([c.GetName(),readHist(obj)])
 
     return histograms
+
+# Function to read "limit" TTree (tree) which yields 2*deltaNLL vs xvar (default "r")
+# returns [x],[2*deltaNLL(x)] sorted in ascending x value
+def get2DeltaNLLScan(tree,xvar='r'):
+    xvs   = []
+    npts = tree.GetEntries()
+    for i in range(npts):
+        tree.GetEntry(i)
+        xvs.append([getattr(tree,xvar),2*tree.deltaNLL])
+    xvs.sort()
+    return np.array([x[0] for x in xvs]),np.array([x[1] for x in xvs])
