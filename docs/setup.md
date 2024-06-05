@@ -28,7 +28,7 @@ docker start -i cms_python
 Obtain the `cms_combine` container using, 
 
 ```bash
-docker run -p 127.0.0.1:8889:8889 --name cms_combine -it gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1
+docker run -p 127.0.0.1:8889:8889 --name cms_combine -it gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1-slim
 ```
 
 If you like to make plots with python instead of using ROOT, then you should also install `matplotlib` inside this container by running the following command in the terminal inside the container. 
