@@ -346,15 +346,14 @@ import pandas as pd
 def histogramToDataframe(weights,channel,process,sys='nominal'):
     
     df = {'channel':[],'process':[],'systematic':[],'bin':[],'sum_w':[],'sum_ww':[]}
-    nbins = len(weights)
+    nbins = len(weights)+1
     df['bin']=range(nbins)
     df['channel']=[channel for i in range(nbins)]
     df['process']=[process for i in range(nbins)]
     df['systematic']=[sys for i in range(nbins)]
-    df['sum_w']=list(weights)
-    df['sum_ww']=list(weights)
+    df['sum_w']=list(weights)+[0] # append 0 to the end as fake overflow bin
+    df['sum_ww']=list(weights)+[0] # append 0 to the end as fake overflow bin
     ret = pd.DataFrame.from_dict(df)
-    return ret
 ```
 </details>
 
@@ -376,9 +375,10 @@ Note that there is also a column in our dataframe called `sum_ww` that we have m
 
 Finally, we can save the histogram in the format needed later for `Combine` using, 
 ```
+dfs = df.sort_values(by=['channel','process','systematic','bin'])
 dfs.to_csv('histograms.csv',index=False)
 ```
-And you'll now see a file called `histograms.csv` in your file browser. 
+The first line is just to avoid some python warnings later on. You'll now see a file called `histograms.csv` in your file browser. 
 
 ## Full analysis 
 
