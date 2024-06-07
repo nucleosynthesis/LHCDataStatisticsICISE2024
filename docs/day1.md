@@ -336,26 +336,7 @@ def getEventWeight(sample,file_index):
 
 Finally, we want to save our histogram in a format that can be interpreted by the `Combine` tool that we use for statistical analyses in CMS. There are many different formats that can be used, however we will use a simple `.csv` format for these exercises. 
 
-I have created a simple conversion function for you to use in the file `hist2df.py`. It's also copied below, 
-
-<details>
-<summary><b>Show python</b></summary>
-```python
-import pandas as pd
-
-def histogramToDataframe(weights,channel,process,sys='nominal'):
-    
-    df = {'channel':[],'process':[],'systematic':[],'bin':[],'sum_w':[],'sum_ww':[]}
-    nbins = len(weights)+1
-    df['bin']=range(nbins)
-    df['channel']=[channel for i in range(nbins)]
-    df['process']=[process for i in range(nbins)]
-    df['systematic']=[sys for i in range(nbins)]
-    df['sum_w']=list(weights)+[0] # append 0 to the end as fake overflow bin
-    df['sum_ww']=list(weights)+[0] # append 0 to the end as fake overflow bin
-    ret = pd.DataFrame.from_dict(df)
-```
-</details>
+I have created a simple conversion function for you to use in the file `hist2df.py`. 
 
 You can convert a histogram created with the matplotlib `hist` function to a dataframe using this function as follows, 
 
