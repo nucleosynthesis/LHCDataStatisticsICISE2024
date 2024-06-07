@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
     
     
       
@@ -145,7 +145,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -821,15 +821,14 @@ From this information, you can now calculate the event weight for each of the si
 </span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="k">def</span> <span class="nf">histogramToDataframe</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span><span class="n">channel</span><span class="p">,</span><span class="n">process</span><span class="p">,</span><span class="n">sys</span><span class="o">=</span><span class="s1">&#39;nominal&#39;</span><span class="p">):</span>
 </span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
 </span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>    <span class="n">df</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;channel&#39;</span><span class="p">:[],</span><span class="s1">&#39;process&#39;</span><span class="p">:[],</span><span class="s1">&#39;systematic&#39;</span><span class="p">:[],</span><span class="s1">&#39;bin&#39;</span><span class="p">:[],</span><span class="s1">&#39;sum_w&#39;</span><span class="p">:[],</span><span class="s1">&#39;sum_ww&#39;</span><span class="p">:[]}</span>
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>    <span class="n">nbins</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>    <span class="n">nbins</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
 </span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">nbins</span><span class="p">)</span>
 </span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;channel&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">channel</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbins</span><span class="p">)]</span>
 </span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;process&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">process</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbins</span><span class="p">)]</span>
 </span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;systematic&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbins</span><span class="p">)]</span>
-</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sum_w&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
-</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sum_ww&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sum_w&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># append 0 to the end as fake overflow bin</span>
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sum_ww&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># append 0 to the end as fake overflow bin</span>
 </span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></code></pre></div>
 </details>
 
@@ -844,9 +843,10 @@ From this information, you can now calculate the event weight for each of the si
 </span></code></pre></div></p>
 <p>Note that there is also a column in our dataframe called <code>sum_ww</code> that we have multiplied by the square of the event weight. This column is the <em>variance</em> of the bin contents due to the limited number of MC simulated events available. We'll discuss more about this column in later exercises. </p>
 <p>Finally, we can save the histogram in the format needed later for <code>Combine</code> using, 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dfs.to_csv(&#39;histograms.csv&#39;,index=False)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>dfs = df.sort_values(by=[&#39;channel&#39;,&#39;process&#39;,&#39;systematic&#39;,&#39;bin&#39;])
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>dfs.to_csv(&#39;histograms.csv&#39;,index=False)
 </span></code></pre></div>
-And you'll now see a file called <code>histograms.csv</code> in your file browser. </p>
+The first line is just to avoid some python warnings later on. You'll now see a file called <code>histograms.csv</code> in your file browser. </p>
 <h2 id="full-analysis">Full analysis</h2>
 <p>In this exercise, we only ran our selection and created a histogram for one of the files for one of our simulated processes. We should run the same selection over all of the simulated files and for the data too!</p>
 <div class="admonition question">
@@ -973,7 +973,7 @@ This will try to access a file twice before giving up and returning an empty lis
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
