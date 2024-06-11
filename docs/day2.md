@@ -324,6 +324,10 @@ ROOT.TMath.Prob(t,18)
 You should find a very very small value in both cases so both fits are pretty awful. 
 ///
 
+!!! tip "Challenge" 
+    In the `combine` online documentation, on [Goodness of fit tests](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part3/commonstatsmethods/#goodness-of-fit-tests), you can find instructions for calculating $p$-values using toys rather than relying on asymptotic methods. Calculate the $p$-values for the two cases using the saturated algorithm.
+
+
 ## Control regions
 
 In the previous examples we saw that we can trade between sensitivity in our measurement (the uncertainty in `r`) and quality of the fit result. In an ideal world, we would have a good overall quality of the fit and a reasonably small uncertainty in our results. 
@@ -352,13 +356,14 @@ trijet["p4"] = trijet.j1 + trijet.j2 + trijet.j3
 trijet_mass = trijet["p4"][ak.argmax(trijet.p4.pt, axis=1, keepdims=True)].mass
 observable = ak.flatten(trijet_mass).to_numpy()
 ```
-for the control region.
-
-
+for the control region. We will use this control region in combination with our signal region in tomorrow's exercise. 
 
 !!! Question 
     Write a new notebook to process the events but this time applying the control region selection. 
-    If you prefer, you can instead modify your original notebook so that it can process the events for the signal region and control region at the same time! Remember to also modify the name of the output file to something like `controlregion_mbjj.csv` so as not to overwrite our signal region. You should also name the channel something like "`controlregion`" as we'll use this name for our datacards later. 
+    If you prefer, you can instead modify your original notebook so that it can process the events for the signal region and control region at the same time! Remember, 
+       - Also modify the name of the output file to something like `controlregion_mbjj.csv` so as not to overwrite our signal region. 
+       - You should name the channel for the control region something like "`controlregion`" as we'll use this name for our datacards later - remember this when using the `histogramToDataframe` function. 
+       - We also want to include the histograms for the jes up and down variations just like we did in the control region. 
 
 /// details | Show answer
 I have uploaded a Jupyter notebook that will perform the  analysis on the samples and produce both the signal region and control region in a single output `.csv` called `allregions.csv`. The notebook os called `FullAnalysisWithControlRegion.ipynb`in the `ttbarAnalysis` folder. If you really get stuck, have a look at this notebook to see how to run our object and event selection, calculate the observable and save the histograms for all of the samples this time with the control region. 

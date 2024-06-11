@@ -71,6 +71,23 @@ events = NanoEventsFactory.from_root('root://eospublic.cern.ch//eos/opendata/cms
 print(events.fields)
 ```
 
+!!! Warning 
+    You may find that sometimes you will see an `IOError` due to XRootD failing to access the remote files. This can be annoying so I recommend that you split up the task across different cells and that you wrap the command to open the file with a `try` `except` block similar to, 
+    ```python
+    input_file = "root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/Run2015D_SingleMuon_flat/07FC2CD2-106C-4419-9260-12B3E271C345_flat.root"
+    try: 
+        events = NanoEventsFactory.from_root(input_file, schemaclass=AGCSchema, treepath='events').events()
+    except OSError:
+        time.sleep(2) # sleep for 2 seconds and try one more time
+        try: 
+            events = NanoEventsFactory.from_root(input_file, schemaclass=AGCSchema, treepath='events').events()
+        except OSError:
+            time.sleep(2) # sleep for 2 seconds just to not try EOS again but give up on this file now
+            return []
+    ```
+    This will try to access a file twice before giving up and returning an empty list.
+    
+
 The output should be a list of the different collections (fields) that are contained in the data. Each event may have a different number of objects in each collection. We can see this by entering the following code in the Jupyter notebook cell, 
 
 ```python
@@ -177,7 +194,7 @@ selected_electrons = events.electron[(events.electron.pt > 30) & (abs(events.ele
 
     For jets: 
     
-      - Corrected (`corrpt`) $p_{T}$> 30 GeV and $|\eta|<2.4$  
+      - Corrected (`corrpt`) $p_{T}$> 30 GeV and $|\eta|<2.4$  The corrected $p_{T}$ is the one obtained after applying a number of calibrations to the jets. 
 
 <details>
 <summary><b>Show answer</b></summary>
@@ -244,7 +261,7 @@ trijet = trijet[has_bjet]
 trijet["p4"] = trijet.j1 + trijet.j2 + trijet.j3 
 ```
 
-Note that in the last command, `p4` is a special field that has the space-time co-ordinates of a four-vector. This makes our calculations of things like the $p_{T}$ or mass of the trijets very easy. Below, we find the invariant mass of the trijet that has the highest $p_{T}$. 
+Note that in the last command, `p4` is a special field that has the space-time co-ordinates of a four-vector. This makes our calculations of things like the $p_{T}$ or mass of the trijets very easy. Below, we find the invariant mass of the trijet that has the highest $p_{T}$. You can find out more about what you can do with these objects at this [coffea page](https://coffeateam.github.io/coffea/api/coffea.nanoevents.methods.vector.PtEtaPhiMLorentzVector.html). 
 
 ```python
 trijet_mass = trijet["p4"][ak.argmax(trijet.p4.pt, axis=1, keepdims=True)].mass
@@ -260,6 +277,57 @@ trijet_pt = trijet["p4"][ak.argmax(trijet.p4.pt, axis=1, keepdims=True)].pt
 ```
 </details>
 
+
+## Jet energy scale uncertainties
+
+At the LHC experiments like CMS, one of the most important uncertainties for any analysis that looks at jets in the final state is the jet energy scale uncertainty. Remember that jets are created by clustering different particles together to reconstruct the energy of outgoing quark or gluon in the hard event. This means that lots of calibration is needed for the different detector components to properly estimate this energy. These calibrations come with uncertainties. In CMS, there are many different sources of uncertainty that come under the label "jet energy scale" but for this exercise, we'll just assume it can be modelled as one uncertainty. 
+
+Take a look again at the fields of the jets in the event, 
+```python
+print(events.jet.fields)
+``` 
+
+You will notice there are two fields called `corrptUp` and `corrptDown`. These are the transverse momentum of the jets if we assume that the calibrations of the jet energy scale is shifted up or down by 1 standard deviation of the jet energy scale calibration measurement - i.e resulting from our uncertainty in these calibrations. For all of the simulated samples (everything that isn't data), we should calculate the observable three times, one for the nominal value of the $p_{T}$ of the jets and one each for these variations. 
+
+To do this, we simply need to make two new fields in our `selected_events` jets that represent the scale-factor applied to the energy-momentum four-vector of the jets. For the "Up" variation, do this with, 
+```python
+selected_events['scaleUp'] = selected_events.corrptUp/selected_events.corrpt
+```
+Now, we can scale the jets in our selected trijets by this scale-factor. We can use the `multiply` method to scale each component of the jet four-vectors by their `scaleUp` and use these new four-vectors to calculate the observable.  
+
+```python
+trijet["p4Up"]   = trijet.j1.multiply(trijet.j1.scaleUp) +trijet.j2.multiply(trijet.j2.scaleUp)+trijet.j3.multiply(trijet.j3.scaleUp) 
+trijet_massUp   = trijet["p4Up"][ak.argmax(trijet.p4Up.pt, axis=1, keepdims=True)].mass
+observableUp    = ak.flatten(trijet_massUp).to_numpy()
+```
+
+We can see that the values in the `observableUp` array are shifted compared to the nominal ones in the `observable` array,
+
+```python
+print(observable)
+print(observableUp)
+```
+and we'll see
+```
+[ 500.74713  291.3941   535.3709  ...  642.0001   783.4518  1441.1604 ]
+[ 506.01013534  294.2633194   539.46490363 ...  648.24548484  789.74960418
+ 1450.60702913]
+```
+
+!!! Question 
+    Calculate the observable again but this time for the `scaleDown` variation. 
+
+/// details | Show answer
+We just need to use the `corrptDown` field instead, i.e 
+```python
+selected_events['scaleDown'] = selected_events.corrptDown/selected_events.corrpt
+...
+trijet["p4Down"]   = trijet.j1.multiply(trijet.j1.scaleDown) +trijet.j2.multiply(trijet.j2.scaleDown)+trijet.j3.multiply(trijet.j3.scaleDown) 
+trijet_massDown   = trijet["p4Down"][ak.argmax(trijet.p4Down.pt, axis=1, keepdims=True)].mass
+observableDown    = ak.flatten(trijet_massDown).to_numpy()
+```
+
+///
 
 ## Histograms and saving output 
 
@@ -345,6 +413,12 @@ weights =  plt.hist(observable,bins=np.arange(50,575,25))
 dfs = histogramToDataframe(weights[0],"signalregion","ttbar")
 ```
 
+We also want to save our histograms for the case where we shifted the jet energy scales (jes) up and down - eg, 
+```python
+weightsUp =  plt.hist(observableUp,bins=np.arange(50,575,25))
+dfsUp = histogramToDataframe(weightsUp[0],"signalregion","ttbar",sys="jesUp")
+```
+
 Since we haven't included the event weights when making the histogram, we will multiply the column `sum_w` by this weight. 
 ```
 event_weight  = getEventWeight('ttbar',0) # the weight needed when using only the first file 
@@ -368,33 +442,17 @@ In this exercise, we only ran our selection and created a histogram for one of t
 !!! Question
      Write some code that will run over all of the simulated sample files and all of the data files too. Remember, 
 
-    1. Only look at the `nominal` samples. 
+    1. Only look at the samples called `nominal` in the `.json` file.  
     2. Make a separate histogram for each of the different processes and for the data. Each simulated sample will have its own event weight that you'll need to calculate. 
-    3. You can save all of the histograms to the same `.csv` file or you can save them in separate files.
+    3. Remember to include a histogram for the up and down variations of the jet energy scale for every sample except the data.  
+    4. You can save all of the histograms to the same `.csv` file or you can save them in separate files.
 
     This may take some time so you should get some working code and then you may need to let the commands run for a couple of hours - maybe leave it running over dinner or even overnight. 
+    Remember, if you don't access the full set of files, you should recalculate the integrated luminosity (you can assume that the new integrated luminosity scales with the number of events accessed) and modify the function to calculate the event weight to account for missing simulated events. 
 
     Feel free to choose your own binning for your observable or you could even choose a different observable to the one we calculated in the example above! You might even try saving different histograms with different binnings/observables so that you can see what difference this makes for the statistical analysis later. 
 
     Please try to write your own code before looking at the answer provided. 
-
-!!! Warning 
-    You may find that sometimes you will see an `IOError` due to XRootD failing to access the remote files. This can be annoying so I recommend that you split up the task across different cells and that you wrap the command to open the file with a `try` `except` block similar to, 
-    ```python
-    input_file = "root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/Run2015D_SingleMuon_flat/07FC2CD2-106C-4419-9260-12B3E271C345_flat.root"
-    try: 
-        events = NanoEventsFactory.from_root(input_file, schemaclass=AGCSchema, treepath='events').events()
-    except OSError:
-        time.sleep(2) # sleep for 2 seconds and try one more time
-        try: 
-            events = NanoEventsFactory.from_root(input_file, schemaclass=AGCSchema, treepath='events').events()
-        except OSError:
-            time.sleep(2) # sleep for 2 seconds just to not try EOS again but give up on this file now
-            return []
-    ```
-    This will try to access a file twice before giving up and returning an empty list.
-    
-    Remember, if you don't access the full set of files, you should recalculate the integrated luminosity (you can assume that the new integrated luminosity scales with the number of events accessed) and modify the function to calculate the event weight to account for missing simulated events. 
 
 
 /// details | Show answer
