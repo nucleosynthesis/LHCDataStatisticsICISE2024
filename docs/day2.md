@@ -12,6 +12,13 @@ To do this, type the following into a terminal on your laptop (or by clicking th
 docker start -i cms_combine
 ```
 
+We'll also need to checkout the GitHub area since this is the first time we're using this container.
+
+```sh
+git clone https://github.com/nucleosynthesis/LHCDataStatisticsICISE2024.git
+cd LHCDataStatisticsICISE2024/ttbarAnalysis 
+```
+
 Now that we're inside the container, start jupyter lab and enter the URL that gets printed to the screen in your preferred browser. 
 
 ```sh
