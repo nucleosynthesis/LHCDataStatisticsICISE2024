@@ -118,6 +118,13 @@ If you are unfamiliar with ROOT, I have created a file called `root2py.py` with 
     file   = ROOT.TFile.Open("fitDiagnosticsTest.root")
     folder = file.Get("shapes_fit_s/signalregion")
 
+    # function getHistogramCountsAndData returns dictionary with format: 
+    #   {
+    #    "data"    : [[x],[y],[ey_l],[ey_h]]
+    #    ,"total"  : [[bin_edges],[y],[ey]]
+    #    ,"samples": ['name',[[bin_edges],[y],[ey]]]
+    #   }
+    
     results = getHistogramCountsAndData(folder)
 
     import matplotlib.pyplot as plt
@@ -140,21 +147,10 @@ If you are unfamiliar with ROOT, I have created a file called `root2py.py` with 
                  ,linestyle="none")
 
     # calculate min and max from total errors on prediction for filled area
-    # we need to add left most and right most bin edge for this to work 
-
     totalED = results['total'][1]-results['total'][2]
     totalEU = results['total'][1]+results['total'][2]
 
-    totalED = np.insert(totalED,0,totalED[0])
-    totalED = np.append(totalED,totalED[-1])
-
-    totalEU = np.insert(totalEU,0,totalEU[0])
-    totalEU = np.append(totalEU,totalEU[-1])
-
-    bin_centres_x = np.insert(bin_centres,0,0)
-    bin_centres_x = np.append(bin_centres_x,len(bin_centres))
-
-    plt.fill_between(bin_centres_x,totalED,totalEU,color='gray',alpha=0.25,step='mid')
+    plt.fill_between(bin_centres,totalED,totalEU,color='gray',alpha=0.25,step='mid')
     plt.ylim(0,1.3e4)
     plt.legend()
     ```
