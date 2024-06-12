@@ -13,3 +13,5 @@ nevts_blah = 253993
 
 
 obsbins=np.arange(500,2050,80)
+
+lumi uncertainty in 2015 - 2.2% 
