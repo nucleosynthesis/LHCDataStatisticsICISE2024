@@ -33,7 +33,7 @@ You can find more useful information about the software we will be using below
 
   * [Docker](https://www.docker.com/): Docker is a desktop client for running the container images that we will be using for these exercises.  
   * [CMS Open Data](https://cms-opendata-guide.web.cern.ch/): The CMS Collaboration regularly releases open datasets for public use. This link is the CMS Open Data Guide
-  * [Combine](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/): The Combine tool is the main statistical analysis software package used by the CMS Collaboration. It is based on the ROOT/RooFit software packages, however for these exercises, you do not need to be an expert user of these packages. 
+  * [Combine](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/v9.2.X/): The Combine tool is the main statistical analysis software package used by the CMS Collaboration. It is based on the ROOT/RooFit software packages, however for these exercises, you do not need to be an expert user of these packages. 
 
 
 ## About the Author

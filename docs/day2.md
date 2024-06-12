@@ -328,7 +328,7 @@ You should find a very very small value in both cases so both fits are pretty aw
 ///
 
 !!! tip "Challenge" 
-    In the `combine` online documentation, on [Goodness of fit tests](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part3/commonstatsmethods/#goodness-of-fit-tests), you can find instructions for calculating $p$-values using toys rather than relying on asymptotic methods. Calculate the $p$-values for the two cases using the saturated algorithm.
+    In the `combine` online documentation, on [Goodness of fit tests](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/v9.2.X/part3/commonstatsmethods/#goodness-of-fit-tests), you can find instructions for calculating $p$-values using toys rather than relying on asymptotic methods. Calculate the $p$-values for the two cases using the saturated algorithm.
 
 
 ## Control regions
