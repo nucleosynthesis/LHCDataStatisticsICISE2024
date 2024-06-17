@@ -12,6 +12,8 @@
         <link rel="prev" href="../day1/">
       
       
+        <link rel="next" href="../day3/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
@@ -400,6 +402,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise 3
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -803,7 +826,7 @@ to
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>trijet_mass = trijet[&quot;p4&quot;][ak.argmax(trijet.p4.pt, axis=1, keepdims=True)].mass
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>observable = ak.flatten(trijet_mass).to_numpy()
 </span></code></pre></div>
-for the control region. We will use this control region in combination with our signal region in tomorrow's exercise. </p>
+for the control region. We will use this control region in combination with our signal region in tomorrow's exercise. We will refer to our control region as 4j0b since we explicitly asked that none of the jets are tagged as coming from a <span class="arithmatex"><span class="MathJax_Preview">b-</span><script type="math/tex">b-</script></span>quark. Instead our signal region is 4j2b since in addition to requiring 4 jets overall, we asked that at least two of them are tagged as originating from a <span class="arithmatex"><span class="MathJax_Preview">b-</span><script type="math/tex">b-</script></span>quark. </p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>Write a new notebook to process the events but this time applying the control region selection. 
@@ -862,6 +885,22 @@ If you prefer, you can instead modify your original notebook so that it can proc
             </div>
           </a>
         
+        
+          
+          <a href="../day3/" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise 3">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise 3
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
         
       </nav>
     

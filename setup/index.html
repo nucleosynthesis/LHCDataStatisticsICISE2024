@@ -387,6 +387,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -501,14 +522,18 @@ To restart the combine container, open a terminal and enter
 </span></code></pre></div>
 <p>where <code>XXXX</code> should be <code>8888</code> for the python container, and <code>8889</code> for the combine container. </p>
 <p>The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. The output will look similar to the one below, 
-<img alt="Example output jlab" src="images/example_jl_launch.jpg" /></p>
+<img alt="Example output jlab" src="../images/example_jl_launch.jpg" /></p>
 <p>Copy one of the URL paths into the URL bar in your preferred browser. You should see something like the following. In this example I have  launched JupyterLab from inside the combine container, </p>
 <p><img alt="Example JupyterLab" src="../images/example_JL.jpg" /></p>
 <p>From here, we can open a new terminal, text file or notebook. On the left you can see a file browser that shows all of the files contained in the container. You can modify/copy/delete these using the file browser by right clicking on them.</p>
 <p>Since our data structures will be mostly Pandas dataframes, you might want to install the Jupyter spreadsheet editor that allows you to both view and edit CSV files, 
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab-spreadsheet-editor
 </span></code></pre></div>
-You can do this in both of the containers but you don't need to install this for the exercises. </p>
+You can do this in both of the containers but you don't need to install this for the exercises.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The browser based terminal inside JupyterLab is very useful but is defaulted to use a fairly cumbersome shell. If you use this terminal, you might find it helpful to first type <code>bash</code> into the terminal to use the BASH terminal shell, which is much better. </p>
+</div>
 <h2 id="moving-files-around">Moving files around</h2>
 <p>From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "downlowd") or you can use the <code>docker cp</code> tool. For example to transfer a file called "myfile.txt" from your local desktop to the <code>cms_python</code> container, you can run, </p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker cp ~/Desktop/myfile.txt cms_python:/code/

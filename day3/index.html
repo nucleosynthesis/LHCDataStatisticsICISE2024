@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../day2/">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Day3 - LHCDataStatisticsICISE2024</title>
+        <title>Exercise 3 - LHCDataStatisticsICISE2024</title>
       
     
     
@@ -68,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#information-for-signal-search" class="md-skip">
+        <a href="#exercise-3-control-regions-and-systematic-uncertainties" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Day3
+              Exercise 3
             
           </span>
         </div>
@@ -234,17 +236,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -258,7 +262,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Exercises
@@ -307,6 +311,100 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exercise 3
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Exercise 3
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#control-region-datacard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control region datacard
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systematic-uncertainties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systematic Uncertainties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Systematic Uncertainties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate-uncertainties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate uncertainties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -334,6 +432,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#control-region-datacard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control region datacard
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systematic-uncertainties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systematic Uncertainties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Systematic Uncertainties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate-uncertainties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate uncertainties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -347,19 +486,109 @@
                   
 
 
-<div class="admonition tip">
-<p class="admonition-title">Challenge</p>
-<p>In the online documentation, on <a href="https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part3/commonstatsmethods/#goodness-of-fit-tests">Goodness of fit tests</a>, you can find instructions for calculating <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>-values using toys rather than relying on asymptotic methods. Calculate the <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>-values for the two cases using the saturated algorithm.</p>
+<h1 id="exercise-3-control-regions-and-systematic-uncertainties">Exercise 3 - Control Regions and Systematic Uncertainties</h1>
+<p>Launch the <code>cms_combine</code> container by typing the following into a terminal on your laptop (or by clicking the play button next to the cms_combine container in the Docker desktop application and using the terminal there).
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
+</span></code></pre></div></p>
+<p>In today's exercise, we are going to use our 4j0b control region that we populated at the end of exercise 2 to constrain our <code>wjets</code> process in our 4j2b signal region. Don't worry if you didn't manage to process the samples to create the histograms for the 4j0b region. I have put a <code>.csv</code> file  <code>exercise2solutions/allregions_mbjj.csv</code> that has both the signal region and control region histograms for you. You'll also find the datacard for the signal region in the same folder: <code>signalregion_mbjj.txt</code>. </p>
+<h2 id="control-region-datacard">Control region datacard</h2>
+<p>First, we need to create a new datacard for our 4j0b control region. This will look very similar to our signal region datacard except that we need to change the name of the channel and point to the right histograms in the file. Copy the text below into a new text file, i've called mine <code>controlregion_mjjj.txt</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>imax 1
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>jmax 4
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>kmax 0
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>shapes data_obs controlregion allregions_mbjj.csv controlregion:data:nominal,sum_w:sum_ww
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>shapes *        controlregion allregions_mbjj.csv controlregion:$PROCESS:nominal,sum_w:sum_ww 
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>bin         controlregion
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>observation -1
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>bin         controlregion controlregion       controlregion      controlregion  controlregion
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>process     ttbar         single_atop_t_chan  single_top_t_chan  single_top_tW  wjets
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>process     0             1                   2                  3              4
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>rate        -1            -1                  -1                 -1             -1
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>wjets_norm rateParam controlregion wjets 1 [0,5]
+</span></code></pre></div>
+<p>Notice how the <code>shapes</code> lines are now pointing to the <code>controlregion</code> histograms in the <code>allregions_mbjj.csv</code> file. The names of the channel everywhere has also changed to <code>controlregion</code>. This tells combine that this data are independent from the data in our signal region. Finally, the last line of the datacard, 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wjets_norm rateParam controlregion wjets 1 [0,5]
+</span></code></pre></div>
+tells combine to create a parameter called <code>wjets_norm</code> that modifies the rate of the <code>wjets</code> process in the <code>controlregion</code>. By naming this parameter the same as the one in our signal region datacard, this parameter will simultaneously scale the <code>wjets</code> process in both regions!</p>
+<p>Now we need to create a single datacard that contains the information for both the signal region and the control region. We do not need to do this by hand since the package comes with a tool that does this for us. To create combined datacard, we can run the following, </p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>combineCards.py<span class="w"> </span><span class="nv">signalregion</span><span class="o">=</span>signalregion_mbjj.txt<span class="w"> </span><span class="nv">controlregion</span><span class="o">=</span>controlregion_mjjj.txt<span class="w"> </span>&gt;<span class="w"> </span>combined.txt<span class="w"> </span>
+</span></code></pre></div>
+<p>Let's look at the resulting datacard (below)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Combination of signalregion=signalregion_mbjj.txt  controlregion=controlregion_mjjj.txt
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>imax 2 number of bins
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>jmax 4 number of processes minus 1
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kmax 0 number of nuisance parameters
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>----------------------------------------------------------------------------------------------------------------------------------
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>shapes *              controlregion  allregions_mbjj.csv controlregion:$PROCESS:nominal,sum_w:sum_ww
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>shapes data_obs       controlregion  allregions_mbjj.csv controlregion:data:nominal,sum_w:sum_ww
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>shapes *              signalregion   allregions_mbjj.csv signalregion:$PROCESS:nominal,sum_w:sum_ww
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>shapes data_obs       signalregion   allregions_mbjj.csv signalregion:data:nominal,sum_w:sum_ww
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>----------------------------------------------------------------------------------------------------------------------------------
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>bin          signalregion   controlregion
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>observation  -1             -1           
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>----------------------------------------------------------------------------------------------------------------------------------
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>bin          signalregion        signalregion        signalregion        signalregion        signalregion        controlregion       controlregion       controlregion       controlregion       controlregion     
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>process      ttbar               single_atop_t_chan  single_top_t_chan   single_top_tW       wjets               ttbar               single_atop_t_chan  single_top_t_chan   single_top_tW       wjets             
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>process      0                   1                   2                   3                   4                   0                   1                   2                   3                   4                 
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>rate         -1                  -1                  -1                  -1                  -1                  -1                  -1                  -1                  -1                  -1                
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>----------------------------------------------------------------------------------------------------------------------------------
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>wjets_norm    rateParam signalregion wjets 1 [0,5]
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>wjets_norm    rateParam controlregion wjets 1 [0,5]
+</span></code></pre></div></p>
+<p>We now see that all of the information has been combined into a single datacard! at the top of the datacard, we see that the datacard is a result of the <em>combination</em> of our two original datacards, and the numbers <code>imax</code>, <code>jmax</code> and <code>kmax</code> have automatically been updated for us. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the combined datacard, both the signal region and control region histograms are taken from the same file <code>allregions_mbjj.csv</code>, this is because I have changed the <code>shape</code> lines in my signal region datacard to read 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>shapes data_obs signalregion allregions_mbjj.csv signalregion:data:nominal,sum_w:sum_ww
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>shapes *        signalregion allregions_mbjj.csv signalregion:$PROCESS:nominal,sum_w:sum_ww 
+</span></code></pre></div>
+You do not have to do this if you created the signal region and control region histograms in separate <code>.csv</code> files. </p>
 </div>
-<h1 id="information-for-signal-search">Information for signal search</h1>
-<p>events = NanoEventsFactory.from_root(
-    "root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-1200_TuneCUETP8M1_13TeV-madgraph-pythia8_flat/5A744C3D-EA4C-4C35-9738-BF878E063562_flat.root",
-    , schemaclass=AGCSchema, treepath='events').events()</p>
-<p>filter_eff = 1 
-xsex = 0.0118 # pb for 1200 GeV Tprime 
-nevts_blah = 253993</p>
-<p>obsbins=np.arange(500,2050,80)</p>
-<p>lumi uncertainty in 2015 - 2.2% </p>
+<p>This datacard can now be used as the input to out <code>combine</code> commands to perform fits and calculate uncertainties as we did when we only had a single datacard. </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Run the fit diagnostics method on the combined datacard to calculate the best fit value for the signal strength parameter <code>r</code>. How does this compare to the two results we obtained with a single datacard? Make a plot of the post-fit distributions and the data in the two regions from this new fit. Remember to add the option <code>-n name</code> to create a different name for the output file to avoid writing over your original outputs from combine.  </p>
+</div>
+<details>
+<summary>Show answer</summary>
+<p>We can run the same commands as before, but this time we provide the combined datacard as the input. For the best fit,
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>combine<span class="w"> </span>combined.txt<span class="w"> </span>-M<span class="w"> </span>FitDiagnostics<span class="w"> </span>--saveShapes<span class="w"> </span>--saveWithUncert<span class="w"> </span>-n<span class="w"> </span>Combined
+</span></code></pre></div>
+with the result as, 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>--- FitDiagnostics ---
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Best fit r: 0.917371  -0.00376498/+0.00377766  (68% CL)
+</span></code></pre></div>
+The result and uncertainty is much closer to the version of the datacard without the freely floating <code>wjets_norm</code> parameter. This means we've successfully managed to recover the constraint on the <code>wjets_norm</code> parameter by using the data in the 4j0b control region!
+You can use the same code from Exercise 2 to plot each of the regions from the result file <code>fitDiagnosticsCombined.root</code></p>
+</details>
+<h2 id="systematic-uncertainties">Systematic Uncertainties</h2>
+<p>In our fits so far, we have assumed that the distributions and rates determined from the simulated events represent perfectly what we would expect to see in data. Of course, reality is never quite that easy and every step of any real data analysis will involve some assumption about how well we can model a particular effect. Each of these assumptions comes with some uncertainty and these uncertainties impact the predicted yields and distributions - we call them "systematic uncertainties". These could range from uncertainties in the theoretical cross-sections used to normalise the samples, uncertainties in the efficiency of the trigger or event selection, energy scale and other calibrations used to reconstruct the particles or even the uncertainty on the integrated luminosity of our data set!</p>
+<p>The vast majority of the time spent doing a real LHC data analysis is carefully understanding which uncertainties effect any particular measurement and how large they are. Often, a lot of work is put into reducing these uncertainties (or rather their effect on the measurement) as much as possible to get the best measurements from the data. We don't have time in these exercises to properly calculate the effects of all the different systematic uncertainties that we should consider, but we will take a look at a few simple ones and include them in our analysis. </p>
+<h3 id="rate-uncertainties">Rate uncertainties</h3>
+<p>The simplest form of systematic uncertainties are those that affect the overall predicted rate of a given process. The first one we will look at is the uncertainty in the integrated luminosity. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">python</label><label for="__tabbed_1_2">pyROOT</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">root2py</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span> <span class="nn">ROOT</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;fitDiagnosticsCombined.root&quot;</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">fit_res</span> <span class="o">=</span> <span class="n">convertFitResult</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;fit_s&quot;</span><span class="p">))</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fit_res</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span> <span class="nn">ROOT</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;fitDiagnosticsCombined.root&quot;</span><span class="p">)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">fit_res</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;fit_s&quot;</span><span class="p">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">fit_res</span><span class="o">.</span><span class="n">Print</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
 
 
 
@@ -384,6 +613,28 @@ nevts_blah = 253993</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../day2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exercise 2">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Exercise 2
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
