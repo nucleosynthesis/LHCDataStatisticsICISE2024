@@ -52,7 +52,10 @@ jupyter lab --ip 0.0.0.0 --port XXXX --no-browser
 
 where `XXXX` should be `8888` for the python container, and `8889` for the combine container. 
 
-The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. You should see something like the following for example when launching JupyterLab from the combine container, 
+The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. The output will look similar to the one below, 
+![Example output jlab](images/example_jl_launch.jpg)
+
+Copy one of the URL paths into the URL bar in your preferred browser. You should see something like the following. In this example I have  launched JupyterLab from inside the combine container, 
 
 ![Example JupyterLab](images/example_JL.jpg)
 
