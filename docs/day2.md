@@ -359,7 +359,7 @@ trijet["p4"] = trijet.j1 + trijet.j2 + trijet.j3
 trijet_mass = trijet["p4"][ak.argmax(trijet.p4.pt, axis=1, keepdims=True)].mass
 observable = ak.flatten(trijet_mass).to_numpy()
 ```
-for the control region. We will use this control region in combination with our signal region in tomorrow's exercise. 
+for the control region. We will use this control region in combination with our signal region in tomorrow's exercise. We will refer to our control region as 4j0b since we explicitly asked that none of the jets are tagged as coming from a $b-$quark. Instead our signal region is 4j2b since in addition to requiring 4 jets overall, we asked that at least two of them are tagged as originating from a $b-$quark. 
 
 !!! Question 
     Write a new notebook to process the events but this time applying the control region selection. 

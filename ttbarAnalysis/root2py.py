@@ -66,3 +66,12 @@ def get2DeltaNLLScan(tree,xvar='r'):
         xvs.append([getattr(tree,xvar),2*tree.deltaNLL])
     xvs.sort()
     return np.array([x[0] for x in xvs]),np.array([x[1] for x in xvs])
+
+# Function to convert a RooFitResult to a pandas dataframe
+def convertFitResult(fr):
+    res = {"Floating Parameter":[],"Final Value":[],"Error":[]}
+    for par in fr.floatParsFinal(): 
+        res["Floating Parameter"].append(par.GetName())
+        res["Final Value"].append(par.getVal())
+        res["Error"].append(par.getError())
+    return pd.DataFrame.from_dict(res)

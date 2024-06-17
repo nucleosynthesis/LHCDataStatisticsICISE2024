@@ -1616,7 +1616,7 @@
         }
     },
     "tprime":{
-        "xsec": 0.0118,
+        "xsec": 1,
         "filter_eff": 1.0,
         "nominal": {
             "files": [

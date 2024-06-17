@@ -65,7 +65,10 @@ Since our data structures will be mostly Pandas dataframes, you might want to in
 ```bash
 pip install jupyterlab-spreadsheet-editor
 ```
-You can do this in both of the containers but you don't need to install this for the exercises. 
+You can do this in both of the containers but you don't need to install this for the exercises.
+
+!!! Warning 
+	The browser based terminal inside JupyterLab is very useful but is defaulted to use a fairly cumbersome shell. If you use this terminal, you might find it helpful to first type `bash` into the terminal to use the BASH terminal shell, which is much better. 
 
 ## Moving files around 
 

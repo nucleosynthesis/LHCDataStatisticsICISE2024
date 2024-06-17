@@ -1,0 +1,24 @@
+Combination of signalregion=signalregion_mbjj.txt  controlregion=controlregion_mjjj.txt
+imax 2 number of bins
+jmax 4 number of processes minus 1
+kmax 4 number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes *              controlregion  allregions_mbjj.csv controlregion:$PROCESS:nominal,sum_w:sum_ww controlregion:$PROCESS:$SYSTEMATIC,sum_w:sum_ww
+shapes data_obs       controlregion  allregions_mbjj.csv controlregion:data:nominal,sum_w:sum_ww
+shapes *              signalregion   allregions_mbjj.csv signalregion:$PROCESS:nominal,sum_w:sum_ww signalregion:$PROCESS:$SYSTEMATIC,sum_w:sum_ww
+shapes data_obs       signalregion   allregions_mbjj.csv signalregion:data:nominal,sum_w:sum_ww
+----------------------------------------------------------------------------------------------------------------------------------
+bin          signalregion   controlregion
+observation  -1             -1           
+----------------------------------------------------------------------------------------------------------------------------------
+bin                               signalregion        signalregion        signalregion        signalregion        signalregion        controlregion       controlregion       controlregion       controlregion       controlregion     
+process                           ttbar               single_atop_t_chan  single_top_t_chan   single_top_tW       wjets               ttbar               single_atop_t_chan  single_top_t_chan   single_top_tW       wjets             
+process                           0                   1                   2                   3                   4                   0                   1                   2                   3                   4                 
+rate                              -1                  -1                  -1                  -1                  -1                  -1                  -1                  -1                  -1                  -1                
+----------------------------------------------------------------------------------------------------------------------------------
+btag                    lnN       1.03                1.03                1.03                1.03                1.03                0.99                0.99                0.99                0.99                0.99              
+ideff                   lnN       1.01                1.01                1.01                1.01                -                   1.01                1.01                1.01                1.01                -                 
+jes                     shape     1.0                 1.0                 1.0                 1.0                 1.0                 1.0                 1.0                 1.0                 1.0                 1.0               
+lumi                    lnN       1.023               1.023               1.023               1.023               -                   0.023               0.023               0.023               0.023               -                 
+wjets_norm    rateParam signalregion wjets 1 [0,5]
+wjets_norm    rateParam controlregion wjets 1 [0,5]
