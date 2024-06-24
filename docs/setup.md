@@ -115,7 +115,7 @@ You can do this in both of the containers but you don't need to install this for
 
 ## Moving files around 
 
-From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "downlowd") or you can use the `docker cp` tool. For example to transfer a file called "myfile.txt" from your local desktop to the `cms_python` container, you can run, 
+From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "download") or you can use the `docker cp` tool. For example to transfer a file called "myfile.txt" from your local desktop to the `cms_python` container, you can run, 
 
 ```sh
 docker cp ~/Desktop/myfile.txt cms_python:/code/
