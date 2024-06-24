@@ -26,6 +26,30 @@ The answer will be shown here
 !!! Warning 
     Sometimes, there will be some technical or conceptual hurdle that requires a bit of careful thought to work around. I have tried to point these out to you in orange boxes like this one to help avoid any major road blocks. 
 
+Throughout the exercise, you will see code blocks like the ones below. Those that are labelled as **Text only** are either output from some command or they are text that you can copy (eg Datacards), 
+
+```
+This is just simple text
+```
+
+Those labeled with **Bash**, indicate commands that can be typed into your Terminal and executed there, 
+```sh
+echo "Hello! I am in a bash terminal"
+```
+
+and those with **Python** as the label indicate python code that can be run inside a Jupypter notebook
+```python
+# This is python code
+def printHello():
+	print("Hello!")
+printHello()
+```
+
+For all of these, there is a copy icon in the top right that you can use to copy the entire contents of the block. 
+
+## Getting started 
+
+We are going to need some software for the exercises. All of the software required is available pre-packaged in container images that you can run using Docker! Head over to the [Getting Started](https://nucleosynthesis.github.io/LHCDataStatisticsICISE2024/setup/) pages now to install Docker and obtain the relevant images. 
 
 ## Useful Links 
 

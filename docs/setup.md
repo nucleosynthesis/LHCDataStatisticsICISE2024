@@ -1,30 +1,8 @@
 # Setup 
 
-To complete these exercises, we will be using two container images, with the software installed for you. In the examples here, we will use [docker](https://www.docker.com/) to run the images. The docker desktop is available for mac, windows and linux so follow the link and download the right installation for your personal laptop. 
+To complete these exercises, we will be using two container images, with the software installed for you. In the examples here, we will use [Docker](https://www.docker.com/) to run the images. The Docker desktop is available for mac, windows and linux so follow the link and download the right installation for your personal laptop. 
 
-Once you have the docker desktop installed, make sure it is running and get the two containers that we'll need for the exercises using the terminal commands below. Note that the docker desktop has its own terminal if you prefer to use that one. 
-
-Throughout the exercise, you will see code blocks like the ones below. Those that are labelled as **Text only** are either output from some command or they are text that you can copy (eg Datacards), 
-
-```
-This is just simple text
-```
-
-Those labeled with **Bash**, indicate commands that can be typed into your Terminal and executed there, 
-```sh
-echo "Hello! I am in a bash terminal"
-```
-
-and those with **Python** as the label indicate python code that can be run inside a Jupypter notebook
-```python
-# This is python code
-def printHello():
-	print("Hello!")
-printHello()
-```
-
-
-For all of these, there is a copy icon in the top right that you can use to copy the entire contents of the block. 
+Once you have the Docker desktop installed, make sure it is running and get the two containers that we'll need for the exercises using the terminal commands below. Note that the Docker desktop has its own terminal if you prefer to use that. 
 
 ## Python environment for CMS Open Data datasets 
 
