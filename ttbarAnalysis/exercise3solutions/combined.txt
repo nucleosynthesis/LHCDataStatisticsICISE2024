@@ -22,3 +22,4 @@ jes                     shape     1.0                 1.0                 1.0   
 lumi                    lnN       1.023               1.023               1.023               1.023               -                   0.023               0.023               0.023               0.023               -                 
 wjets_norm    rateParam signalregion wjets 1 [0,5]
 wjets_norm    rateParam controlregion wjets 1 [0,5]
+* autoMCStats 0

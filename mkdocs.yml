@@ -8,6 +8,8 @@ nav:
     - "Exercise 1": day1.md
     - "Exercise 2": day2.md
     - "Exercise 3": day3.md
+    - "Exercise 4": day4.md
+
 
 #theme: cosmo
 #theme: united
@@ -35,9 +37,9 @@ markdown_extensions:
           anchor_linenums: true
           line_spans: __span
           pygments_lang_class: true
+          auto_title: true
     - pymdownx.inlinehilite
     - pymdownx.snippets
-    - pymdownx.superfences
     - pymdownx.superfences
     - pymdownx.tabbed:
           alternate_style: true

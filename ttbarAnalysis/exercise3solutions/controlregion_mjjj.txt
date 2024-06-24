@@ -18,3 +18,4 @@ lumi  lnN   0.023        0.023                0.023              0.023          
 ideff lnN   1.01         1.01                 1.01               1.01           - 
 btag  lnN   0.99         0.99                 0.99               0.99           0.99 
 jes   shape 1            1                    1                  1              1
+controlregion autoMCStats 0

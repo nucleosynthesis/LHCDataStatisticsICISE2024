@@ -1,5 +1,6 @@
 import ROOT 
 import numpy as np 
+import pandas as pd 
 
 # Funtion to read data_obs TGraphAsymmErrors from fitDiagnostics.root
 # convert to [x],[y],[eyL],[eyU]

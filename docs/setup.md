@@ -4,6 +4,28 @@ To complete these exercises, we will be using two container images, with the sof
 
 Once you have the docker desktop installed, make sure it is running and get the two containers that we'll need for the exercises using the terminal commands below. Note that the docker desktop has its own terminal if you prefer to use that one. 
 
+Throughout the exercise, you will see code blocks like the ones below. Those that are labelled as **Text only** are either output from some command or they are text that you can copy (eg Datacards), 
+
+```
+This is just simple text
+```
+
+Those labeled with **Bash**, indicate commands that can be typed into your Terminal and executed there, 
+```sh
+echo "Hello! I am in a bash terminal"
+```
+
+and those with **Python** as the label indicate python code that can be run inside a Jupypter notebook
+```python
+# This is python code
+def printHello():
+	print("Hello!")
+printHello()
+```
+
+
+For all of these, there is a copy icon in the top right that you can use to copy the entire contents of the block. 
+
 ## Python environment for CMS Open Data datasets 
 
 Obtain the `cms_python` container using, 
@@ -32,7 +54,7 @@ docker run -p 127.0.0.1:8889:8889 --name cms_combine -it gitlab-registry.cern.ch
 ```
 
 If you like to make plots with python instead of using ROOT, then you should also install `matplotlib` inside this container by running the following command in the terminal inside the container. 
-```
+```sh
 pip install matplotlib 
 ```
 
@@ -61,20 +83,41 @@ Copy one of the URL paths into the URL bar in your preferred browser. You should
 
 From here, we can open a new terminal, text file or notebook. On the left you can see a file browser that shows all of the files contained in the container. You can modify/copy/delete these using the file browser by right clicking on them.
 
+
+### Notebooks 
+
+Selecting a "Python 3" Juypter notebook allows you to run code python and see the output all in one page. You can type code into a cell and run it by either pressing the play button ( &#9658;) at the top or using `shift`+`enter` on your keyboard, as in the image below 
+
+![Example run cell](images/runcell.jpg)
+
+Create new cells by using the `+` button at the top. If you press the fast-fwd &#9193;
+ button at the top, all of the cells in the whole notebook will be run one after the other. Notebooks will automatically save every so often so your work will be kept. The files will be named with the `.ipynb` extension.
+
+### Terminal 
+
+You will need to use the terminal for some commands. For this, you can either use the same terminal as you used to start docker, or you can open a new "Terminal" in your browser from the Launcher tab, 
+
+![Example terminal](images/terminal.jpg)
+
+!!! Warning 
+	The browser based terminal inside JupyterLab is very useful but is defaulted to use a fairly cumbersome shell. If you use this terminal, you might find it helpful to first type `bash` into the terminal to use the BASH terminal shell, which is much better. 
+
+
+### CSV files 
+
 Since our data structures will be mostly Pandas dataframes, you might want to install the Jupyter spreadsheet editor that allows you to both view and edit CSV files, 
 ```bash
 pip install jupyterlab-spreadsheet-editor
 ```
 You can do this in both of the containers but you don't need to install this for the exercises.
 
-!!! Warning 
-	The browser based terminal inside JupyterLab is very useful but is defaulted to use a fairly cumbersome shell. If you use this terminal, you might find it helpful to first type `bash` into the terminal to use the BASH terminal shell, which is much better. 
+
 
 ## Moving files around 
 
 From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "downlowd") or you can use the `docker cp` tool. For example to transfer a file called "myfile.txt" from your local desktop to the `cms_python` container, you can run, 
 
-```
+```sh
 docker cp ~/Desktop/myfile.txt cms_python:/code/
 ```
 

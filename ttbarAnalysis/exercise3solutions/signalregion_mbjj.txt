@@ -18,4 +18,4 @@ lumi  lnN   1.023        1.023                1.023              1.023          
 ideff lnN   1.01         1.01                 1.01               1.01           - 
 btag  lnN   1.03         1.03                 1.03               1.03           1.03 
 jes   shape 1            1                    1                  1              1
-         
+signalregion autoMCStats 0         

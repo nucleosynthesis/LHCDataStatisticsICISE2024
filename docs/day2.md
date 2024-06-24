@@ -246,7 +246,7 @@ where the $\hat{\cdot}$ notation means the maximum likelihood estimate (or best-
 
 `combine` can calculate this quantity as a function of our parameter $r$ using the `-M MultiDimFit` method and the `grid` algo with the command, 
 
-```
+```sh
 combine signalregion_mbjj.txt -M MultiDimFit --algo grid --points 50 --setParameterRanges r=0.7,1
 ```
 
@@ -315,7 +315,7 @@ p = \int_{t}^{+\infty} \chi^{2}(n)dt
 $$
 
 or in code form using the function below 
-```
+```python
 import ROOT 
 ROOT.TMath.Prob(t,18)
 ```
