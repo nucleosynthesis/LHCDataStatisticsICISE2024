@@ -644,7 +644,7 @@ To restart the combine container, open a terminal and enter
 </span></code></pre></div>
 You can do this in both of the containers but you don't need to install this for the exercises.</p>
 <h2 id="moving-files-around">Moving files around</h2>
-<p>From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "downlowd") or you can use the <code>docker cp</code> tool. For example to transfer a file called "myfile.txt" from your local desktop to the <code>cms_python</code> container, you can run, </p>
+<p>From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "download") or you can use the <code>docker cp</code> tool. For example to transfer a file called "myfile.txt" from your local desktop to the <code>cms_python</code> container, you can run, </p>
 <div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>cp<span class="w"> </span>~/Desktop/myfile.txt<span class="w"> </span>cms_python:/code/
 </span></code></pre></div>
 <p>in a terminal on your local machine. You can also copy files from the containers to your local machine by reversing the order of the locations in the command above. </p>
