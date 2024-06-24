@@ -428,6 +428,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -535,18 +556,18 @@
 <p>In today's exercises, we're going to use the CMS statistics software tool <code>combine</code> to extract statistical results from the data (and simulation) that we processed yesterday. <code>combine</code> is a software package that is designed with a command line interface that uses simple <code>.txt</code> files as inputs. You can find out lots more about the tool at the online documentation pages <a href="https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/">here</a>.</p>
 <p>We'll begin by starting the container that has <code>combine</code> compiled for us. If you didn't download the container already, go back to the <a href="https://nucleosynthesis.github.io/LHCDataStatisticsICISE2024/setup/">Getting started</a> pages before continuing. </p>
 <p>To do this, type the following into a terminal on your laptop (or by clicking the play button next to the <code>cms_combine</code> container in the Docker desktop application and using the terminal there).</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
 </span></code></pre></div>
 <p>We'll also need to checkout the GitHub area since this is the first time we're using this container.</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nucleosynthesis/LHCDataStatisticsICISE2024.git
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nucleosynthesis/LHCDataStatisticsICISE2024.git
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>LHCDataStatisticsICISE2024/ttbarAnalysis<span class="w"> </span>
 </span></code></pre></div>
 <p>Now that we're inside the container, start jupyter lab and enter the URL that gets printed to the screen in your preferred browser. </p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8889</span><span class="w"> </span>--no-browser
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8889</span><span class="w"> </span>--no-browser
 </span></code></pre></div>
 <h2 id="datacards">Datacards</h2>
 <p>Create a new Text file and give it a name (I called mine <code>signalregion_mbjj.txt</code>). This text file will be the input to our <code>combine</code> commands - we call it a Datacard. Copy the text below into your text file. </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>imax 1
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>imax 1
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>jmax 4
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>kmax 0
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a># -----------------------------------------------------------------------------------------
@@ -565,20 +586,20 @@
 <p>Let's go through these lines and see what they are doing. </p>
 <p>The first lines, specifying <code>imax</code>, <code>jmax</code> and <code>kmax</code> indicate the number of channels, backgrounds and systematic uncertainties, respectively. In our case, we only have one channel (the signal region), and we have four background processes. Right now, we don't have any systematic uncertainties included but later on, we'll add some - for now, we keep this as 0. </p>
 <p>The next lines (starting with <code>shapes</code>) say where <code>combine</code> will find the distributions (histograms) for the data and the different processes. The first line, 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>shapes data_obs signalregion signalregion_mbjj.csv signalregion:data:nominal,sum_w:sum_ww
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>shapes data_obs signalregion signalregion_mbjj.csv signalregion:data:nominal,sum_w:sum_ww
 </span></code></pre></div>
 says that the shape (distribution or histogram if you like) for the observed data can be found in our <code>signalregion_mbjj.csv</code> file in the rows where <code>process==data</code> and <code>systematic==nomial</code>. The final parts of the line say that the column <code>sum_w</code> represents the number of events in each bin. For the data <code>sum_ww</code> isn't used but this part of the line is needed for the code to work. </p>
 <p>The next line is very similar 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>shapes *        signalregion signalregion_mbjj.csv signalregion:$PROCESS:nominal,sum_w:sum_ww 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>shapes *        signalregion signalregion_mbjj.csv signalregion:$PROCESS:nominal,sum_w:sum_ww 
 </span></code></pre></div>
 This line is telling <code>combine</code> where to find the shapes for the signal and background processes. Here the <code>*</code> means that this applies for all of the processes. The keyword <code>$PROCESS</code> is expanded for each process that we define in the datacard. This is useful to avoid having to write the same datacard line over and over. </p>
 <p>Next, we have a line that indicates the total numbers of events for the observed data and the different processes in our signal region. 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bin         signalregion
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bin         signalregion
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>observation -1
 </span></code></pre></div>
 This tells <code>combine</code> that there is a channel called <code>signalregion</code>. The observation is usually a number but the <code>-1</code> there tells <code>combine</code> to go and calculate the total number of observed events by summing up the number of events in each bin - this saves us having to write the number each time. 
 The next lines are similar, 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bin         signalregion  signalregion        signalregion       signalregion   signalregion
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bin         signalregion  signalregion        signalregion       signalregion   signalregion
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>process     ttbar         single_atop_t_chan  single_top_t_chan  single_top_tW  wjets
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>process     0             1                   2                  3              4
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>rate        -1            -1                  -1                 -1             -1
@@ -587,10 +608,10 @@ The next lines are similar,
 <h2 id="performing-a-first-fit">Performing a first fit</h2>
 <p>Now that we have our Datacard written. We can perform some statistical calculations. We can perform a fit to the data, allowing the total rate of the <code>ttbar</code> process to vary. <code>combine</code> will automatically create a signal strength parameter - <code>r</code> which multiplies the rate of any signal process defined in the datacard. </p>
 <p>We will use the <code>FitDiagnostics</code> method to extract the best fit value for the parameter <code>r</code> given the data we observed. We do this by typing the following command in a terminal (you can open a terminal in  jupyter lab), </p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>combine<span class="w"> </span>signalregion_mbjj.txt<span class="w"> </span>-M<span class="w"> </span>FitDiagnostics
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>combine<span class="w"> </span>signalregion_mbjj.txt<span class="w"> </span>-M<span class="w"> </span>FitDiagnostics
 </span></code></pre></div>
 <p>You should get something similar to the output below 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a> --- FitDiagnostics ---
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a> --- FitDiagnostics ---
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Best fit r: 0.903186  -0.00366585/+0.00367476  (68% CL)
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Done in 0.01 min (cpu), 0.01 min (real)
 </span></code></pre></div>
@@ -598,13 +619,13 @@ You will likely get some warnings about <code>PDF didn't factorize!</code> that 
 <p>So it looks like the fit would prefer a value of the <span class="arithmatex"><span class="MathJax_Preview">tt</span><script type="math/tex">tt</script></span> cross-section around 10% smaller than the predicted value that we used when we processed the ttbar sample. You may have a different result if you are using your own <code>.csv</code> file. </p>
 <p>Note that you also will now have files called <code>higgsCombineTest.FitDiagnostics.mH120.root</code> and <code>fitDiagnosticsTest.root</code> that got created from the above command. These files save the result in various ROOT object formats. We will use these  files later on, but for now you can just ignore this file. </p>
 <p>Let's see if our data/simulation agreement has improved after the fit. We can do this by asking combine to create new templates after the fit. We run the command again, but this time, we will add options to save templates with uncertainties to the <code>fitDiagnosticsTest.root</code> file. </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>combine signalregion_mbjj.txt -M FitDiagnostics --saveShapes --saveWithUncert
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>combine signalregion_mbjj.txt -M FitDiagnostics --saveShapes --saveWithUncert
 </span></code></pre></div>
 <p>If you are unfamiliar with ROOT, I have created a file called <code>root2py.py</code> with some handy functions to read and convert the objects into simple python arrays that can be used for plotting with matplotlib. Below is an example (written in pyROOT or just python) to make a plot of the distributions after the fit. You can copy either of these </p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">python</label><label for="__tabbed_1_2">pyROOT</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span> <span class="nn">root2py</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span> <span class="nn">root2py</span> <span class="kn">import</span> <span class="o">*</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span> <span class="nn">ROOT</span> 
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;fitDiagnosticsTest.root&quot;</span><span class="p">)</span>
@@ -648,7 +669,7 @@ You will likely get some warnings about <code>PDF didn't factorize!</code> that 
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">import</span> <span class="nn">ROOT</span>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">import</span> <span class="nn">ROOT</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">canvas</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TCanvas</span><span class="p">()</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
@@ -694,7 +715,7 @@ You will likely get some warnings about <code>PDF didn't factorize!</code> that 
 <h2 id="adding-additional-rate-modifiers">Adding additional rate modifiers</h2>
 <p>The agreement looks a little better than before but we could still do better. We should also allow our dominant background process (<code>wjets</code>) to float so that the fit can adjust the total rate. </p>
 <p>Add the following line to your Datacard, 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>wjets_norm rateParam signalregion wjets 1 [0,5]
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>wjets_norm rateParam signalregion wjets 1 [0,5]
 </span></code></pre></div></p>
 <p>This line tells combine to add a new parameter to the model that multiplies the rate of the specified process, in the specified channel. The new parameters will be <code>wjets_norm</code>, which multiplies the rate of the <code>wjets</code> process. We've chosen the default value of the parameter to be 1 and allowed its range to vary between 0 and 5. </p>
 <div class="admonition question">
@@ -704,10 +725,10 @@ You will likely get some warnings about <code>PDF didn't factorize!</code> that 
 <details>
 <summary>Show answer</summary>
 <p>By running
-<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>combine signalregion_mbjj.txt -M FitDiagnostics -v 3 --saveShapes --saveWithUncert
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>combine signalregion_mbjj.txt -M FitDiagnostics -v 3 --saveShapes --saveWithUncert
 </span></code></pre></div>
 we now find in the output 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>r          = 0.824465     +/-  0.0115119 (limited)
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>r          = 0.824465     +/-  0.0115119 (limited)
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>wjets_norm = 2.45416      +/-  0.203045  (limited)
 </span></code></pre></div>
 Now we see that the fit would prefer to scale up the <code>wjets</code> process by a factor of ~2.45 compared to our original prediction. The best-fit value for the signal strength has also changed from what we saw before. </p>
@@ -729,7 +750,7 @@ q(r) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 </div>
 <p>where the <span class="arithmatex"><span class="MathJax_Preview">\hat{\cdot}</span><script type="math/tex">\hat{\cdot}</script></span> notation means the maximum likelihood estimate (or best-fit) and the subscript and where <span class="arithmatex"><span class="MathJax_Preview">\nu</span><script type="math/tex">\nu</script></span> represents our nuisance parameters. In this case, we only have one such nuisance parameter which is <code>wjets_norm</code>. The value <span class="arithmatex"><span class="MathJax_Preview">\hat{\nu}_{r}</span><script type="math/tex">\hat{\nu}_{r}</script></span> is the value of <span class="arithmatex"><span class="MathJax_Preview">\nu</span><script type="math/tex">\nu</script></span> for that maximises the likelihood when <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> is fixed to a specific value - sometimes we call this the conditional maximum likelihood. </p>
 <p><code>combine</code> can calculate this quantity as a function of our parameter <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> using the <code>-M MultiDimFit</code> method and the <code>grid</code> algo with the command, </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>combine signalregion_mbjj.txt -M MultiDimFit --algo grid --points 50 --setParameterRanges r=0.7,1
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>combine<span class="w"> </span>signalregion_mbjj.txt<span class="w"> </span>-M<span class="w"> </span>MultiDimFit<span class="w"> </span>--algo<span class="w"> </span>grid<span class="w"> </span>--points<span class="w"> </span><span class="m">50</span><span class="w"> </span>--setParameterRanges<span class="w"> </span><span class="nv">r</span><span class="o">=</span><span class="m">0</span>.7,1
 </span></code></pre></div>
 <p>The option <code>--points</code> tells combine how many evenly spaced points at which to evaluate the function <span class="arithmatex"><span class="MathJax_Preview">q(r)</span><script type="math/tex">q(r)</script></span> and the last option specifies the range that those points should be in. After running this command, there will be a new ROOT file called <code>higgsCombineTest.MultiDimFit.mH120.root</code> in your file browser. </p>
 <div class="admonition warning">
@@ -740,7 +761,7 @@ q(r) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">python</label><label for="__tabbed_2_2">pyROOT</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">root2py</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">root2py</span> <span class="kn">import</span> <span class="o">*</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">import</span> <span class="nn">ROOT</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">fscan</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="s2">&quot;higgsCombineTest.MultiDimFit.mH120.root&quot;</span><span class="p">)</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">tree</span>  <span class="o">=</span> <span class="n">fscan</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;limit&quot;</span><span class="p">)</span>
@@ -749,7 +770,7 @@ q(r) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">import</span> <span class="nn">ROOT</span>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">import</span> <span class="nn">ROOT</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">fscan</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="p">(</span><span class="s2">&quot;higgsCombineTest.MultiDimFit.mH120.root&quot;</span><span class="p">)</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">tree</span>  <span class="o">=</span> <span class="n">fscan</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;limit&quot;</span><span class="p">)</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">canvas</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TCanvas</span><span class="p">()</span>
@@ -781,7 +802,7 @@ q(r) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 $$
 where <span class="arithmatex"><span class="MathJax_Preview">L_{s}</span><script type="math/tex">L_{s}</script></span> is the <em>saturated likelihood</em>. It is defined as the likelihood valye where the expected value in each bin is exactly the same as the observed value - i.e the very largest possible likelihood value given the data observed. </p>
 <p>We can calculate this value with <code>combine</code> using the following, 
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>combine<span class="w"> </span>signalregion_mbjj.txt<span class="w"> </span>-M<span class="w"> </span>GoodnessOfFit<span class="w"> </span>--algo<span class="o">=</span>saturated
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>combine<span class="w"> </span>signalregion_mbjj.txt<span class="w"> </span>-M<span class="w"> </span>GoodnessOfFit<span class="w"> </span>--algo<span class="o">=</span>saturated
 </span></code></pre></div></p>
 <p>A result in the literature (Wilks' theorem) tells us that for large statistics samples (in the asymptotic limit), this test statistic will be distributed according to a <span class="arithmatex"><span class="MathJax_Preview">\chi^{2}</span><script type="math/tex">\chi^{2}</script></span> distribution with <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> degrees of freedom where <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is the number of bins in the distribution minus the number of parameters in the fit - in our case this is <span class="arithmatex"><span class="MathJax_Preview">n=20-2=18</span><script type="math/tex">n=20-2=18</script></span>. This means, we can convert the number calculated by combine to a <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>-value using, </p>
 <div class="arithmatex">
@@ -793,8 +814,8 @@ p = \int_{t}^{+\infty} \chi^{2}(n)dt
 </script>
 </div>
 <p>or in code form using the function below 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>import ROOT 
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>ROOT.TMath.Prob(t,18)
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span> <span class="nn">ROOT</span> 
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">ROOT</span><span class="o">.</span><span class="n">TMath</span><span class="o">.</span><span class="n">Prob</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span>
 </span></code></pre></div></p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
@@ -814,13 +835,13 @@ p = \int_{t}^{+\infty} \chi^{2}(n)dt
 <p>A control region is another region in the data that is dominated by a particular background process. By including this region in the fit, we will be able to use that additional data to constrain the <code>wjets_norm</code> parameter. </p>
 <p>Let's go back to the <code>cms_python</code> container and modify our analysis notebook to create a control region that will be dominated by the <code>wjets</code> process. If you didn't manage to get a working analysis yesterday, you can use the notebook provided <code>ttbarAnalysis/exercise1solutions/FullAnalysis.ipynb</code>. </p>
 <p>We need to change how we are filtering our events, we want to modify the selection so that we choose events with no b-tagged jets but everything else is the same, i.e change,   </p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>(ak.sum(selected_jets.btag &gt;= 0.8, axis=1) &gt;= 2)
+<p><div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>(ak.sum(selected_jets.btag &gt;= 0.8, axis=1) &gt;= 2)
 </span></code></pre></div>
 to 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>(ak.sum(selected_jets.btag &gt;= 0.8, axis=1) &lt; 1)
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>(ak.sum(selected_jets.btag &gt;= 0.8, axis=1) &lt; 1)
 </span></code></pre></div></p>
 <p>Our observable will be different now since we no longer want to pick the trijet with a b-quark. Instead we just use the trijet with the largest <span class="arithmatex"><span class="MathJax_Preview">p_{T}</span><script type="math/tex">p_{T}</script></span>, i.e we change the observable calcualtion to 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>trijet = ak.combinations(selected_events_CR, 3, fields=[&quot;j1&quot;, &quot;j2&quot;, &quot;j3&quot;])
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>trijet = ak.combinations(selected_events_CR, 3, fields=[&quot;j1&quot;, &quot;j2&quot;, &quot;j3&quot;])
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>j1,j2,j3 = ak.unzip(trijet)
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>trijet[&quot;p4&quot;] = trijet.j1 + trijet.j2 + trijet.j3
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>trijet_mass = trijet[&quot;p4&quot;][ak.argmax(trijet.p4.pt, axis=1, keepdims=True)].mass

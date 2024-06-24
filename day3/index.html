@@ -12,6 +12,8 @@
         <link rel="prev" href="../day2/">
       
       
+        <link rel="next" href="../day4/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
@@ -391,8 +393,35 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#shape-uncertainties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shape uncertainties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monte-carlo-mc-statistics-uncertainties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monte-carlo (MC) statistics uncertainties.
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting it all together
+    </span>
+  </a>
   
 </li>
       
@@ -400,6 +429,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise 4
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -466,8 +516,35 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#shape-uncertainties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shape uncertainties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monte-carlo-mc-statistics-uncertainties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monte-carlo (MC) statistics uncertainties.
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting it all together
+    </span>
+  </a>
   
 </li>
       
@@ -488,12 +565,12 @@
 
 <h1 id="exercise-3-control-regions-and-systematic-uncertainties">Exercise 3 - Control Regions and Systematic Uncertainties</h1>
 <p>Launch the <code>cms_combine</code> container by typing the following into a terminal on your laptop (or by clicking the play button next to the cms_combine container in the Docker desktop application and using the terminal there).
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
 </span></code></pre></div></p>
 <p>In today's exercise, we are going to use our 4j0b control region that we populated at the end of exercise 2 to constrain our <code>wjets</code> process in our 4j2b signal region. Don't worry if you didn't manage to process the samples to create the histograms for the 4j0b region. I have put a <code>.csv</code> file  <code>exercise2solutions/allregions_mbjj.csv</code> that has both the signal region and control region histograms for you. You'll also find the datacard for the signal region in the same folder: <code>signalregion_mbjj.txt</code>. </p>
 <h2 id="control-region-datacard">Control region datacard</h2>
 <p>First, we need to create a new datacard for our 4j0b control region. This will look very similar to our signal region datacard except that we need to change the name of the channel and point to the right histograms in the file. Copy the text below into a new text file, i've called mine <code>controlregion_mjjj.txt</code></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>imax 1
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>imax 1
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>jmax 4
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>kmax 0
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a># -----------------------------------------------------------------------------------------
@@ -511,14 +588,14 @@
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>wjets_norm rateParam controlregion wjets 1 [0,5]
 </span></code></pre></div>
 <p>Notice how the <code>shapes</code> lines are now pointing to the <code>controlregion</code> histograms in the <code>allregions_mbjj.csv</code> file. The names of the channel everywhere has also changed to <code>controlregion</code>. This tells combine that this data are independent from the data in our signal region. Finally, the last line of the datacard, 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wjets_norm rateParam controlregion wjets 1 [0,5]
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wjets_norm rateParam controlregion wjets 1 [0,5]
 </span></code></pre></div>
 tells combine to create a parameter called <code>wjets_norm</code> that modifies the rate of the <code>wjets</code> process in the <code>controlregion</code>. By naming this parameter the same as the one in our signal region datacard, this parameter will simultaneously scale the <code>wjets</code> process in both regions!</p>
 <p>Now we need to create a single datacard that contains the information for both the signal region and the control region. We do not need to do this by hand since the package comes with a tool that does this for us. To create combined datacard, we can run the following, </p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>combineCards.py<span class="w"> </span><span class="nv">signalregion</span><span class="o">=</span>signalregion_mbjj.txt<span class="w"> </span><span class="nv">controlregion</span><span class="o">=</span>controlregion_mjjj.txt<span class="w"> </span>&gt;<span class="w"> </span>combined.txt<span class="w"> </span>
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>combineCards.py<span class="w"> </span><span class="nv">signalregion</span><span class="o">=</span>signalregion_mbjj.txt<span class="w"> </span><span class="nv">controlregion</span><span class="o">=</span>controlregion_mjjj.txt<span class="w"> </span>&gt;<span class="w"> </span>combined.txt<span class="w"> </span>
 </span></code></pre></div>
 <p>Let's look at the resulting datacard (below)
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Combination of signalregion=signalregion_mbjj.txt  controlregion=controlregion_mjjj.txt
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Combination of signalregion=signalregion_mbjj.txt  controlregion=controlregion_mjjj.txt
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>imax 2 number of bins
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>jmax 4 number of processes minus 1
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kmax 0 number of nuisance parameters
@@ -543,7 +620,7 @@ tells combine to create a parameter called <code>wjets_norm</code> that modifies
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>In the combined datacard, both the signal region and control region histograms are taken from the same file <code>allregions_mbjj.csv</code>, this is because I have changed the <code>shape</code> lines in my signal region datacard to read 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>shapes data_obs signalregion allregions_mbjj.csv signalregion:data:nominal,sum_w:sum_ww
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>shapes data_obs signalregion allregions_mbjj.csv signalregion:data:nominal,sum_w:sum_ww
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>shapes *        signalregion allregions_mbjj.csv signalregion:$PROCESS:nominal,sum_w:sum_ww 
 </span></code></pre></div>
 You do not have to do this if you created the signal region and control region histograms in separate <code>.csv</code> files. </p>
@@ -556,10 +633,10 @@ You do not have to do this if you created the signal region and control region h
 <details>
 <summary>Show answer</summary>
 <p>We can run the same commands as before, but this time we provide the combined datacard as the input. For the best fit,
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>combine<span class="w"> </span>combined.txt<span class="w"> </span>-M<span class="w"> </span>FitDiagnostics<span class="w"> </span>--saveShapes<span class="w"> </span>--saveWithUncert<span class="w"> </span>-n<span class="w"> </span>Combined
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>combine<span class="w"> </span>combined.txt<span class="w"> </span>-M<span class="w"> </span>FitDiagnostics<span class="w"> </span>--saveShapes<span class="w"> </span>--saveWithUncert<span class="w"> </span>-n<span class="w"> </span>Combined
 </span></code></pre></div>
 with the result as, 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>--- FitDiagnostics ---
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>--- FitDiagnostics ---
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Best fit r: 0.917371  -0.00376498/+0.00377766  (68% CL)
 </span></code></pre></div>
 The result and uncertainty is much closer to the version of the datacard without the freely floating <code>wjets_norm</code> parameter. This means we've successfully managed to recover the constraint on the <code>wjets_norm</code> parameter by using the data in the 4j0b control region!
@@ -568,26 +645,316 @@ You can use the same code from Exercise 2 to plot each of the regions from the r
 <h2 id="systematic-uncertainties">Systematic Uncertainties</h2>
 <p>In our fits so far, we have assumed that the distributions and rates determined from the simulated events represent perfectly what we would expect to see in data. Of course, reality is never quite that easy and every step of any real data analysis will involve some assumption about how well we can model a particular effect. Each of these assumptions comes with some uncertainty and these uncertainties impact the predicted yields and distributions - we call them "systematic uncertainties". These could range from uncertainties in the theoretical cross-sections used to normalise the samples, uncertainties in the efficiency of the trigger or event selection, energy scale and other calibrations used to reconstruct the particles or even the uncertainty on the integrated luminosity of our data set!</p>
 <p>The vast majority of the time spent doing a real LHC data analysis is carefully understanding which uncertainties effect any particular measurement and how large they are. Often, a lot of work is put into reducing these uncertainties (or rather their effect on the measurement) as much as possible to get the best measurements from the data. We don't have time in these exercises to properly calculate the effects of all the different systematic uncertainties that we should consider, but we will take a look at a few simple ones and include them in our analysis. </p>
+<p>In likelihood based methods (mostly what we use at the LHC), systematic uncertainties are included via nuisance parameters and auxiliary observables that can have different distributions. </p>
 <h3 id="rate-uncertainties">Rate uncertainties</h3>
-<p>The simplest form of systematic uncertainties are those that affect the overall predicted rate of a given process. The first one we will look at is the uncertainty in the integrated luminosity. </p>
+<p>The simplest form of systematic uncertainties are those that affect the overall predicted rate of a given process. We typically model rate uncertainties using the log-normal distribution. In <code>combine</code> this is implemented by multiplying the rate of a given process by a multiplicative factor, </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+f(\nu) = \kappa^{\nu}
+</div>
+<script type="math/tex; mode=display">
+f(\nu) = \kappa^{\nu}
+</script>
+</div>
+<p>where <span class="arithmatex"><span class="MathJax_Preview">\nu</span><script type="math/tex">\nu</script></span> is the associated nuisance parameter and <span class="arithmatex"><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span> is the <em>size of the effect</em> of the uncertainty on a particular process. In <code>combine</code> an additional gaussian probability term in the likelihood gets included. This means that since the likelihood estimator <span class="arithmatex"><span class="MathJax_Preview">\hat{\nu}</span><script type="math/tex">\hat{\nu}</script></span> is normal distributed, <span class="arithmatex"><span class="MathJax_Preview">f(\hat{\nu})</span><script type="math/tex">f(\hat{\nu})</script></span> will be log-normal distributed (hence the name). As we saw in lectures, the practical reason why we use log-normals is that <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> can never be negative, which makes sense for a rate. </p>
+<p>Add the following lines to your signal region datacard, </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>lumi  lnN   1.023        1.023                1.023              1.023          - 
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ideff lnN   1.01         1.01                 1.01               1.01           - 
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>btag  lnN   1.03         1.03                 1.03               1.03           1.03 
+</span></code></pre></div>
+<p>Each of these lines tells <code>combine</code> that we have a new rate systematic uncertainty. Lets take a look at the first one of these <code>lumi</code>. The first parts of the line give the nuisance parameter parameter its name - <code>lumi</code> and its type <code>lnN</code> means its log-normal. The numbers represent the value of <span class="arithmatex"><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span> for each process in our signal region. An uncertainty in the integrated luminosity measurement will scale all of the simulated processes up/down by the same amount - in our 2015 data, the uncertainty in the luminosity measurements was 2.3% so <span class="arithmatex"><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span> is 1.023. </p>
+<p>If the parameter <code>lumi</code> is set to +1, the value of <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> will be 1.023 so all of the processes will increase by a factor 1.023. Similarly, if the parameter <code>lumi</code> is set to -1, the value of <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> will be 1.023 so all of the processes will change by 1/1.023 (decrease). </p>
+<p>Our <code>wjets</code> normalisation is determined by the fit - i.e from the data in the control region - so the luminosity systematic uncertainty should have no effect. In <code>combine</code> this is indicated by putting a "<code>-</code>" instead of a value. The next line <code>ideff</code> is exactly the same, except it is the systematic uncertainty for the muon/electron identification efficiency measurements and is 1%. </p>
+<p>The third line is for the b-tagging efficiency, and the uncertainty has an effect of 3% in the signal region. In the control region however, since we are rejecting b-jets, the effect of the uncertainty should be opposite (anti-correlated) to the signal region. In <code>combine</code> we achieve this by setting <span class="arithmatex"><span class="MathJax_Preview">\kappa &lt; 1</span><script type="math/tex">\kappa < 1</script></span>.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>If the b-jet tagging efficiency increases the rate in the signal by 3%, what should the values of <span class="arithmatex"><span class="MathJax_Preview">kappa</span><script type="math/tex">kappa</script></span> be in the control region? Remember the effect should be opposite to the signal region and that since there is about 3 times as many events in the signal region as the control region, increasing the number of events that pass the b-tag (in our 4j2b region) by 3% will not result in a reduction of 3% events that fail the b-tag (in the 4j0b region). Add the systematic uncertainty lines for the <code>lumi</code>, <code>ideff</code> and <code>btag</code> to your control region datacard. </p>
+</div>
+<details>
+<summary>Show answer</summary>
+<p>The number should be <span class="arithmatex"><span class="MathJax_Preview">\kappa=0.99</span><script type="math/tex">\kappa=0.99</script></span> in the control region. This is because adding 3% of the yield in the signal region to the control region would increase the control region yield by 1% since there's already 3 times as much data there. The rate uncertainty lines in the datacard for the control region should look like, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>lumi  lnN   0.023        0.023                0.023              0.023          - 
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ideff lnN   1.01         1.01                 1.01               1.01           - 
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>btag  lnN   0.99         0.99                 0.99               0.99           0.99 
+</span></code></pre></div></p>
+</details>
+<p>Notice that for the <code>btag</code> uncertainty, there should be an entry for the <code>wjets</code>. This is because this  uncertainty has a different effect in the signal and control regions. </p>
+<h3 id="shape-uncertainties">Shape uncertainties</h3>
+<p>Some uncertainties in will affect both the overall rate of a particular process <em>and its shape</em>. For these uncertainties, we need to provide alternative histograms that represent the shape of a process when we vary some aspect of our model up and down. Remember, when we created our <code>.csv</code> files, we created histograms where we shifted the jet energy scale up and down by its uncertainty, resulting from uncertainties in the jet calibrations. Let's take a look at these distributions for the <code>ttbar</code> process. You can use the following code in a notebook to plot these distributions, </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>import matplotlib.pyplot as plt 
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>import pandas as pd 
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>df = pd.read_csv(&quot;allregions_mbjj.csv&quot;)
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>df = df[ (df.channel==&#39;controlregion&#39;) &amp; (df.process==&#39;ttbar&#39;) ]
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>bins = df[df.systematic==&#39;nominal&#39;][&#39;bin&#39;]
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>print(len(bins))
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>plt.hist(bins,bins=bins
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>         ,weights=df[df.systematic==&#39;nominal&#39;][&#39;sum_w&#39;]
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>         ,histtype=&#39;step&#39;
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>         ,color=&#39;blue&#39;
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>         ,label=&#39;nominal&#39;)
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>plt.hist(bins,bins=bins
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>         ,weights=df[df.systematic==&#39;jesUp&#39;][&#39;sum_w&#39;]
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>         ,histtype=&#39;step&#39;
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>         ,color=&#39;green&#39;
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>         ,label=&#39;jesUp&#39;)
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>plt.hist(bins,bins=bins
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>         ,weights=df[df.systematic==&#39;jesDown&#39;][&#39;sum_w&#39;]
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>         ,histtype=&#39;step&#39;
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>         ,color=&#39;red&#39;
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>         ,label=&#39;jesDown&#39;)
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>plt.legend()
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>plt.xlabel(&quot;Bin number&quot;)
+</span></code></pre></div>
+<p>Which will produce a figure similar to the one below, </p>
+<p><img alt="jes templates" src="../images/jes_temps.png" /></p>
+<p>We can see that when the jet energy scale is increased, the observable distribution shifts to the right, while when it is decreased, the observable distribution shifts to the left! This uncertainty will change our prediction of what the <code>ttbar</code> shape looks like (and in fact the other processes too). </p>
+<p>We need to tell <code>combine</code> about these histograms to create shape systematic uncertainties. First, we need to extend the <code>shapes</code> lines in the datacards to point to these histograms. We do this by modifying the <code>shapes</code> line of our <code>signalregion_mbjj.txt</code> datacard to read 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>shapes *        signalregion allregions_mbjj.csv signalregion:$PROCESS:nominal,sum_w:sum_ww signalregion:$PROCESS:$SYSTEMATIC,sum_w:sum_ww 
+</span></code></pre></div>
+Notice how there is a new part at the end of the line with <code>$SYSTEMATIC</code>. This tells <code>combine</code> that each shape systematic uncertainty templates can be found in the same <code>.csv</code> file but will correspond to the column <code>systematic==SYSTEMATICUp</code> and <code>systematic==SYSTEMATICDown</code>. The value of <code>SYSTEMATIC</code> is determined from each of the shape uncertainty lines we add at the end of the datacard. We have only one which we called <code>jes</code> so we just need to add the following line to our signal region datacard, </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>jes   shape     1          1           1            1            1
+</span></code></pre></div>
+<p>This line tells <code>combine</code> to create a nuisance parameter for our shape uncertainty with the name <code>jes</code>. Each number indicates how big the variation that templates corresponds to is, for each process. The value <code>1</code> means that each alternate histogram corresponds to a 1-sigma variation. If we put a <code>-</code> it would mean there is no effect for this process. </p>
+<p>We also need to add the same to our control region datacard since the same source of uncertainty (and hence the same parameter) will simultaneously modify the shapes of our processes in the 4j0b and 4j2b regions. </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Extend the <code>shapes</code> lines in the control region datacard and add the systematic uncertainty line in the control region datacard too. </p>
+</div>
+<details>
+<summary>Show answer</summary>
+<p>First, we need to modify the <code>shapes</code> lines in the control region datcard as follows, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>shapes *  controlregion allregions_mbjj.csv controlregion:$PROCESS:nominal,sum_w:sum_ww controlregion:$PROCESS:$SYSTEMATIC,sum_w:sum_ww 
+</span></code></pre></div>
+similarly to what was done in the signal region. We also need to include the line that tells <code>combine</code> to create a shape uncertainty for the <code>jes</code> parameter at the end of the datacard, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>jes   shape   1         1          1          1           1
+</span></code></pre></div></p>
+</details>
+<p><code>combine</code> will create a new parameter, called <code>jes</code> and interpolate each bin of the histogram so that the histogram shape becomes a function of <code>jes</code>. The interpolating function is designed to be differentiable and so that we retrieve the nominal shape when <code>jes=0</code>, the <code>jesUp</code> shape when <code>jes=1</code> and the <code>jesDown</code> shape when <code>jes=-1</code>. </p>
+<p>First, let's build the statistical model for the signal region datacard, </p>
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>text2workspace.py<span class="w"> </span>signalregion_mbjj.txt<span class="w"> </span>-o<span class="w"> </span>signalregion_mbjj.root
+</span></code></pre></div>
+<p>Using the code below, we can plot the distribution of the <code>ttbar</code> process as we vary the <code>jes</code> parameter value, </p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">python</label><label for="__tabbed_1_2">pyROOT</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">root2py</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span> <span class="nn">ROOT</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;fitDiagnosticsCombined.root&quot;</span><span class="p">)</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">fit_res</span> <span class="o">=</span> <span class="n">convertFitResult</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;fit_s&quot;</span><span class="p">))</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fit_res</span><span class="p">)</span>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">from</span> <span class="nn">root2py</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">import</span> <span class="nn">ROOT</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;signalregion_mbjj.root &quot;</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">workspace</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">hists</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">jes_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.25</span><span class="p">)</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="k">for</span> <span class="n">jes_val</span> <span class="ow">in</span> <span class="n">jes_vals</span><span class="p">:</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>  <span class="n">workspace</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;jes&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setVal</span><span class="p">(</span><span class="n">jes_val</span><span class="p">)</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>  <span class="n">hist</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="s2">&quot;shapeSig_signalregion_ttbar_morph&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">createHistogram</span><span class="p">(</span><span class="s2">&quot;CMS_th1x&quot;</span><span class="p">)</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>  <span class="n">hist</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="s2">&quot;hist_</span><span class="si">%g</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">jes_val</span><span class="p">)</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>  <span class="n">hists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="n">normalize</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">jes_vals</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">jes_vals</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="n">colormap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">Reds</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">jes_val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">jes_vals</span><span class="p">):</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>    <span class="n">h</span> <span class="o">=</span> <span class="n">hists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>    <span class="n">rx</span><span class="p">,</span><span class="n">ry</span><span class="p">,</span><span class="n">ey</span> <span class="o">=</span> <span class="n">readHist</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rx</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="n">rx</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="n">ry</span>
+</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>            <span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;jes = </span><span class="si">%g</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">jes_val</span>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>            <span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colormap</span><span class="p">(</span><span class="n">normalize</span><span class="p">(</span><span class="n">jes_val</span><span class="p">)))</span>
+</span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a>
+</span><span id="__span-16-30"><a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bin number&quot;</span><span class="p">)</span>
+</span><span id="__span-16-31"><a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span><span id="__span-16-32"><a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span> <span class="nn">ROOT</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;fitDiagnosticsCombined.root&quot;</span><span class="p">)</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">fit_res</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;fit_s&quot;</span><span class="p">)</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">fit_res</span><span class="o">.</span><span class="n">Print</span><span class="p">()</span>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">import</span> <span class="nn">ROOT</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;signalregion_mbjj.root &quot;</span><span class="p">)</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">workspace</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">hists</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="n">jes_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.25</span><span class="p">)</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="k">for</span> <span class="n">jes_val</span> <span class="ow">in</span> <span class="n">jes_vals</span><span class="p">:</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>  <span class="n">workspace</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;jes&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setVal</span><span class="p">(</span><span class="n">jes_val</span><span class="p">)</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>  <span class="n">hist</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="s2">&quot;shapeSig_signalregion_ttbar_morph&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">createHistogram</span><span class="p">(</span><span class="s2">&quot;CMS_th1x&quot;</span><span class="p">)</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>  <span class="n">hist</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="s2">&quot;hist_</span><span class="si">%g</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">jes_val</span><span class="p">)</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>  <span class="n">hists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="n">ROOT</span><span class="o">.</span><span class="n">gStyle</span><span class="o">.</span><span class="n">SetOptStat</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="n">c</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TCanvas</span><span class="p">()</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="n">leg</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TLegend</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.89</span><span class="p">,</span><span class="mf">0.89</span><span class="p">)</span>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="n">leg</span><span class="o">.</span><span class="n">SetBorderSize</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">jes_val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">jes_vals</span><span class="p">):</span>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>    <span class="n">hists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">SetTitle</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>    <span class="n">hists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">GetXaxis</span><span class="p">()</span><span class="o">.</span><span class="n">SetTitle</span><span class="p">(</span><span class="s2">&quot;Bin Number&quot;</span><span class="p">)</span>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>    <span class="n">hists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">GetYaxis</span><span class="p">()</span><span class="o">.</span><span class="n">SetTitle</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a>    <span class="n">hists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">SetLineWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a>    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="n">hists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="s2">&quot;PLC&quot;</span><span class="p">)</span>
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a>    <span class="k">else</span><span class="p">:</span> <span class="n">hists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="s2">&quot;histsame PLC&quot;</span><span class="p">)</span>
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a>    <span class="n">leg</span><span class="o">.</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hists</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s2">&quot;jes = </span><span class="si">%g</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">jes_val</span><span class="p">,</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+</span><span id="__span-17-29"><a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a>    <span class="n">color</span><span class="o">+=</span><span class="mi">1</span>
+</span><span id="__span-17-30"><a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a>
+</span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a><span class="n">leg</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+</span><span id="__span-17-32"><a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="n">c</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
 </span></code></pre></div>
 </div>
 </div>
+</div>
+<p>This will give a figure similar to the following, </p>
+<p><img alt="jes effects" src="../images/jes_effects.png" /></p>
+<h3 id="monte-carlo-mc-statistics-uncertainties">Monte-carlo (MC) statistics uncertainties.</h3>
+<p>Finally, we also need to account for the fact that our simulated samples (Monte-carlo or MC) have a limited number of events available to create the histograms. This leads to a statistical uncertainty on the histograms that are used in the fits. <code>combine</code> can take care of these for us by using the <code>sum_ww</code> column that we included in our dataframes. We just need to add the following line to the datacard, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>signalregion autoMCStats 0
+</span></code></pre></div>
+The first part indicates which control region to consider and the <code>0</code> at the end is used to determine how the calculation is done (this is very technical ut if you want to find out about this you can read about it <a href="https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part2/bin-wise-stats/">here</a>). </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Add the relevant line to the control region datacard to account for the MC statistical uncertainties. </p>
+</div>
+<details>
+<summary>Show answer</summary>
+<p>We just need to add the following line to the <code>controlregion_mjjj.txt</code> datacard, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>controlregion autoMCStats 0
+</span></code></pre></div></p>
+</details>
+<p>Finally, we should make sure the <code>kmax</code> line in our datacards is adjusted to reflect the total number of systematic uncertainties. We do not count the <code>autoMCStats</code> line so we shoud set <code>kmax</code> to 4 in each datacard. </p>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+<p>Now we have everything in place for the control region and systematic uncertainties, we should re-run the fit and extract the uncertainty on our measured signal rate <code>r</code>. </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>
+<p>Run the <code>FitDiagnostics</code> method on the combination of the signal and control region and create a plot of the best fit for both regions.</p>
+</li>
+<li>
+<p>Determine the best fit parameter values. </p>
+</li>
+<li>
+<p>Calculate the <span class="arithmatex"><span class="MathJax_Preview">\chi^{2}</span><script type="math/tex">\chi^{2}</script></span> from the best fit model. </p>
+</li>
+<li>
+<p>Perform a profiled likelihood scan of the signal strength <code>r</code> and plot it. </p>
+</li>
+</ol>
+<p>For 2. you can use the code below to print out the fit results. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">python</label><label for="__tabbed_2_2">pyROOT</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">from</span> <span class="nn">root2py</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kn">import</span> <span class="nn">ROOT</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;fitDiagnosticsCombined.root&quot;</span><span class="p">)</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">fit_res</span> <span class="o">=</span> <span class="n">convertFitResult</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;fit_s&quot;</span><span class="p">))</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">fit_res</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span> <span class="nn">ROOT</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">file</span>   <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;fitDiagnosticsCombined.root&quot;</span><span class="p">)</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">fit_res</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s2">&quot;fit_s&quot;</span><span class="p">)</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">fit_res</span><span class="o">.</span><span class="n">Print</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You may find that you get some errors in these steps related to the fit result. I advise you to add the <code>--cminDefaultMinimizerStrategy 0</code> to your <code>combine</code> commands. </p>
+</div>
+<details>
+<summary>Solution</summary>
+<ol>
+<li>
+<p>First we should create a new combined card with, 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>combineCards.py<span class="w"> </span><span class="nv">signalregion</span><span class="o">=</span>signalregion_mbjj.txt<span class="w"> </span><span class="nv">controlregion</span><span class="o">=</span>controlregion_mjjj.txt<span class="w"> </span>&gt;<span class="w"> </span>combined.txt
+</span></code></pre></div>
+Next, we run the fit, 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>combine<span class="w"> </span>combined.txt<span class="w"> </span>-M<span class="w"> </span>FitDiagnostics<span class="w"> </span>--skipB<span class="w"> </span>-n<span class="w"> </span>Combined<span class="w"> </span>--cminDefaultMinimizerStrategy<span class="w"> </span><span class="m">0</span><span class="w"> </span>--saveShapes<span class="w"> </span>--saveWithUncert<span class="w"> </span>
+</span></code></pre></div>
+Using the output file we can find the results of the fit and also make plots of the. It should look something like the figure below, 
+<img alt="final fits" src="../images/sig_cont.png" /></p>
+</li>
+<li>
+<p>Using the code provided, we get the following output (you should see something similar), 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>  Floating Parameter    FinalValue +/-  Error   
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>  --------------------  --------------------------
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>                  btag    2.1634e+00 +/-  8.54e-01
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>                 ideff    4.6681e-01 +/-  1.02e+00
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>                   jes    7.7198e-01 +/-  6.09e-02
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>                  lumi   -3.7650e-01 +/-  1.01e-02
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>  prop_bincontrolregion_bin0    7.9891e-01 +/-  8.83e-01
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>  prop_bincontrolregion_bin1    2.1593e+00 +/-  9.00e-01
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>  prop_bincontrolregion_bin10   -1.3274e-01 +/-  9.10e-01
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>  prop_bincontrolregion_bin11    5.6041e-01 +/-  9.08e-01
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>  prop_bincontrolregion_bin12   -1.1857e+00 +/-  9.12e-01
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>  prop_bincontrolregion_bin13   -4.7468e-01 +/-  9.10e-01
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>  prop_bincontrolregion_bin14   -2.6136e-01 +/-  9.08e-01
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>  prop_bincontrolregion_bin15   -7.2318e-01 +/-  9.09e-01
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>  prop_bincontrolregion_bin16   -4.2696e-02 +/-  9.06e-01
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>  prop_bincontrolregion_bin17   -1.1439e+00 +/-  9.09e-01
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>  prop_bincontrolregion_bin18   -4.3565e-01 +/-  9.08e-01
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>  prop_bincontrolregion_bin19   -9.3066e-02 +/-  9.03e-01
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>  prop_bincontrolregion_bin2    2.2050e+00 +/-  9.14e-01
+</span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>  prop_bincontrolregion_bin3    2.1998e+00 +/-  9.19e-01
+</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>  prop_bincontrolregion_bin4    1.1193e+00 +/-  9.31e-01
+</span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>  prop_bincontrolregion_bin5   -1.2407e+00 +/-  9.34e-01
+</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>  prop_bincontrolregion_bin6   -8.1615e-01 +/-  9.26e-01
+</span><span id="__span-24-24"><a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>  prop_bincontrolregion_bin7   -7.9343e-01 +/-  9.15e-01
+</span><span id="__span-24-25"><a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>  prop_bincontrolregion_bin8    1.1287e-01 +/-  9.13e-01
+</span><span id="__span-24-26"><a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a>  prop_bincontrolregion_bin9   -1.7256e-01 +/-  9.11e-01
+</span><span id="__span-24-27"><a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>  prop_binsignalregion_bin0   -4.3051e-01 +/-  9.76e-01
+</span><span id="__span-24-28"><a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a>  prop_binsignalregion_bin1   -8.8268e-01 +/-  9.84e-01
+</span><span id="__span-24-29"><a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a>  prop_binsignalregion_bin10    6.6384e-01 +/-  9.85e-01
+</span><span id="__span-24-30"><a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a>  prop_binsignalregion_bin11    5.6890e-01 +/-  9.84e-01
+</span><span id="__span-24-31"><a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a>  prop_binsignalregion_bin12    5.6803e-01 +/-  9.83e-01
+</span><span id="__span-24-32"><a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a>  prop_binsignalregion_bin13    5.8144e-01 +/-  9.82e-01
+</span><span id="__span-24-33"><a id="__codelineno-24-33" name="__codelineno-24-33" href="#__codelineno-24-33"></a>  prop_binsignalregion_bin14    2.1825e-01 +/-  9.82e-01
+</span><span id="__span-24-34"><a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a>  prop_binsignalregion_bin15    5.5108e-01 +/-  9.82e-01
+</span><span id="__span-24-35"><a id="__codelineno-24-35" name="__codelineno-24-35" href="#__codelineno-24-35"></a>  prop_binsignalregion_bin16    4.5671e-01 +/-  9.81e-01
+</span><span id="__span-24-36"><a id="__codelineno-24-36" name="__codelineno-24-36" href="#__codelineno-24-36"></a>  prop_binsignalregion_bin17    5.1578e-01 +/-  9.79e-01
+</span><span id="__span-24-37"><a id="__codelineno-24-37" name="__codelineno-24-37" href="#__codelineno-24-37"></a>  prop_binsignalregion_bin18    6.7096e-01 +/-  9.79e-01
+</span><span id="__span-24-38"><a id="__codelineno-24-38" name="__codelineno-24-38" href="#__codelineno-24-38"></a>  prop_binsignalregion_bin19    2.1684e-01 +/-  9.81e-01
+</span><span id="__span-24-39"><a id="__codelineno-24-39" name="__codelineno-24-39" href="#__codelineno-24-39"></a>  prop_binsignalregion_bin2   -1.0313e+00 +/-  9.86e-01
+</span><span id="__span-24-40"><a id="__codelineno-24-40" name="__codelineno-24-40" href="#__codelineno-24-40"></a>  prop_binsignalregion_bin3   -6.6500e-01 +/-  9.87e-01
+</span><span id="__span-24-41"><a id="__codelineno-24-41" name="__codelineno-24-41" href="#__codelineno-24-41"></a>  prop_binsignalregion_bin4   -9.7874e-01 +/-  9.89e-01
+</span><span id="__span-24-42"><a id="__codelineno-24-42" name="__codelineno-24-42" href="#__codelineno-24-42"></a>  prop_binsignalregion_bin5   -5.2094e-01 +/-  9.88e-01
+</span><span id="__span-24-43"><a id="__codelineno-24-43" name="__codelineno-24-43" href="#__codelineno-24-43"></a>  prop_binsignalregion_bin6   -2.9065e-01 +/-  9.88e-01
+</span><span id="__span-24-44"><a id="__codelineno-24-44" name="__codelineno-24-44" href="#__codelineno-24-44"></a>  prop_binsignalregion_bin7    1.5923e-01 +/-  9.87e-01
+</span><span id="__span-24-45"><a id="__codelineno-24-45" name="__codelineno-24-45" href="#__codelineno-24-45"></a>  prop_binsignalregion_bin8    5.5739e-01 +/-  9.87e-01
+</span><span id="__span-24-46"><a id="__codelineno-24-46" name="__codelineno-24-46" href="#__codelineno-24-46"></a>  prop_binsignalregion_bin9    4.2686e-01 +/-  9.86e-01
+</span><span id="__span-24-47"><a id="__codelineno-24-47" name="__codelineno-24-47" href="#__codelineno-24-47"></a>                     r    8.7335e-01 +/-  2.67e-02
+</span><span id="__span-24-48"><a id="__codelineno-24-48" name="__codelineno-24-48" href="#__codelineno-24-48"></a>            wjets_norm    5.0207e-01 +/-  1.47e-02
+</span></code></pre></div></p>
+</li>
+<li>
+<p>The <span class="arithmatex"><span class="MathJax_Preview">\chi^{2}</span><script type="math/tex">\chi^{2}</script></span> is obtained first running the <code>GoodnessOfFit</code> method, 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>combine<span class="w"> </span>combined.txt<span class="w"> </span>-M<span class="w"> </span>GoodnessOfFit<span class="w"> </span>--algo<span class="o">=</span>saturated
+</span></code></pre></div>
+which gives a value of 335.387. We can convert it to a <span class="arithmatex"><span class="MathJax_Preview">p-</span><script type="math/tex">p-</script></span>value again. </p>
+</li>
+<li>
+<p>We can run a scan of the profiled likelihood using <code>combine</code> with, 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>combine<span class="w"> </span>combined.txt<span class="w"> </span>-M<span class="w"> </span>MultiDimFit<span class="w"> </span>--algo<span class="w"> </span>grid<span class="w"> </span>--points<span class="w"> </span><span class="m">50</span><span class="w"> </span>--setParameterRanges<span class="w"> </span><span class="nv">r</span><span class="o">=</span><span class="m">0</span>.7,1<span class="w"> </span>-n<span class="w"> </span>Combined
+</span></code></pre></div>
+and plot using similar code to before. The output should look like the following, 
+<img alt="final scan" src="../images/scan_r_final.png" /></p>
+</li>
+</ol>
+<p>All of the code to produce these results can be found under <code>exercise3solutions/Answers.ipynb</code></p>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Challenge</p>
+<p>Calculate the uncertainty on <code>r</code> only considering statistical uncertainties and when also including systematic ones. This will involve freezing some of the parameters of the model to their maximum likelihood estimates - you can refer to information <a href="https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part3/commonstatsmethods/#fitting-only-some-parameters">here</a> on how this can be done. </p>
 </div>
 
 
@@ -633,6 +1000,22 @@ You can use the same code from Exercise 2 to plot each of the regions from the r
             </div>
           </a>
         
+        
+          
+          <a href="../day4/" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise 4">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise 4
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
