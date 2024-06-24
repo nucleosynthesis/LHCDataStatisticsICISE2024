@@ -580,45 +580,32 @@
 
 
 <h1 id="setup">Setup</h1>
-<p>To complete these exercises, we will be using two container images, with the software installed for you. In the examples here, we will use <a href="https://www.docker.com/">docker</a> to run the images. The docker desktop is available for mac, windows and linux so follow the link and download the right installation for your personal laptop. </p>
-<p>Once you have the docker desktop installed, make sure it is running and get the two containers that we'll need for the exercises using the terminal commands below. Note that the docker desktop has its own terminal if you prefer to use that one. </p>
-<p>Throughout the exercise, you will see code blocks like the ones below. Those that are labelled as <strong>Text only</strong> are either output from some command or they are text that you can copy (eg Datacards), </p>
-<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>This is just simple text
-</span></code></pre></div>
-<p>Those labeled with <strong>Bash</strong>, indicate commands that can be typed into your Terminal and executed there, 
-<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello! I am in a bash terminal&quot;</span>
-</span></code></pre></div></p>
-<p>and those with <strong>Python</strong> as the label indicate python code that can be run inside a Jupypter notebook
-<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># This is python code</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">def</span> <span class="nf">printHello</span><span class="p">():</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">printHello</span><span class="p">()</span>
-</span></code></pre></div></p>
-<p>For all of these, there is a copy icon in the top right that you can use to copy the entire contents of the block. </p>
+<p>To complete these exercises, we will be using two container images, with the software installed for you. In the examples here, we will use <a href="https://www.docker.com/">Docker</a> to run the images. The Docker desktop is available for mac, windows and linux so follow the link and download the right installation for your personal laptop. </p>
+<p>Once you have the Docker desktop installed, make sure it is running and get the two containers that we'll need for the exercises using the terminal commands below. Note that the Docker desktop has its own terminal if you prefer to use that. </p>
 <h2 id="python-environment-for-cms-open-data-datasets">Python environment for CMS Open Data datasets</h2>
 <p>Obtain the <code>cms_python</code> container using, </p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>cms_python<span class="w"> </span>-P<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/cms_open_data_python:/code<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>cms_python<span class="w"> </span>-P<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/cms_open_data_python:/code<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
 </span></code></pre></div>
 <p>Now that you're inside the container, run the following to get all of the necessary scripts and install some additional packages. 
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>vector<span class="w"> </span><span class="nv">coffea</span><span class="o">==</span><span class="m">0</span>.7.21
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>vector<span class="w"> </span><span class="nv">coffea</span><span class="o">==</span><span class="m">0</span>.7.21
 </span></code></pre></div></p>
 <p>You can exit the container at any time by typing <code>exit</code> in the terminal. To restart the python container, open a terminal and enter 
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_python
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_python
 </span></code></pre></div></p>
 <h2 id="combine-package-for-statistical-analysis">Combine package for statistical analysis</h2>
 <p>Obtain the <code>cms_combine</code> container using, </p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:8889:8889<span class="w"> </span>--name<span class="w"> </span>cms_combine<span class="w"> </span>-it<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1-slim
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:8889:8889<span class="w"> </span>--name<span class="w"> </span>cms_combine<span class="w"> </span>-it<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1-slim
 </span></code></pre></div>
 <p>If you like to make plots with python instead of using ROOT, then you should also install <code>matplotlib</code> inside this container by running the following command in the terminal inside the container. 
-<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>
 </span></code></pre></div></p>
 <p>You can exit the container at any time by typing <code>exit</code> in the terminal. 
 To restart the combine container, open a terminal and enter 
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
 </span></code></pre></div></p>
 <h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
 <p>As much as possible, we will use Juptyer notebooks to write and run code for these exercises. You can launch JupterLab from either of the two containers by using the following command inside the terminal after starting the container. </p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span>XXXX<span class="w"> </span>--no-browser
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span>XXXX<span class="w"> </span>--no-browser
 </span></code></pre></div>
 <p>where <code>XXXX</code> should be <code>8888</code> for the python container, and <code>8889</code> for the combine container. </p>
 <p>The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. The output will look similar to the one below, 
@@ -640,12 +627,12 @@ To restart the combine container, open a terminal and enter
 </div>
 <h3 id="csv-files">CSV files</h3>
 <p>Since our data structures will be mostly Pandas dataframes, you might want to install the Jupyter spreadsheet editor that allows you to both view and edit CSV files, 
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab-spreadsheet-editor
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab-spreadsheet-editor
 </span></code></pre></div>
 You can do this in both of the containers but you don't need to install this for the exercises.</p>
 <h2 id="moving-files-around">Moving files around</h2>
 <p>From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "download") or you can use the <code>docker cp</code> tool. For example to transfer a file called "myfile.txt" from your local desktop to the <code>cms_python</code> container, you can run, </p>
-<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>cp<span class="w"> </span>~/Desktop/myfile.txt<span class="w"> </span>cms_python:/code/
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>cp<span class="w"> </span>~/Desktop/myfile.txt<span class="w"> </span>cms_python:/code/
 </span></code></pre></div>
 <p>in a terminal on your local machine. You can also copy files from the containers to your local machine by reversing the order of the locations in the command above. </p>
 
