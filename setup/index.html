@@ -585,7 +585,7 @@
 <p><img alt="desktop" src="../images/Docker.jpg" /></p>
 <h2 id="python-environment-for-cms-open-data-datasets">Python environment for CMS Open Data datasets</h2>
 <p>Obtain the <code>cms_python</code> container using, </p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>cms_python<span class="w"> </span>-P<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/cms_open_data_python:/code<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>cms_python<span class="w"> </span>-P<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
 </span></code></pre></div>
 <p>Now that you're inside the container, run the following to get all of the necessary scripts and install some additional packages. 
 <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>vector<span class="w"> </span><span class="nv">coffea</span><span class="o">==</span><span class="m">0</span>.7.21
@@ -600,8 +600,8 @@
 <p>If you like to make plots with python instead of using ROOT, then you should also install <code>matplotlib</code> inside this container by running the following command in the terminal inside the container. 
 <div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>
 </span></code></pre></div></p>
-<p>You can exit the container at any time by typing <code>exit</code> in the terminal. 
-To restart the combine container, open a terminal and enter 
+<p>You can exit the container at any time by typing <code>exit</code> in the terminal. </p>
+<p>To restart the combine container, open a terminal and enter 
 <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
 </span></code></pre></div></p>
 <h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
