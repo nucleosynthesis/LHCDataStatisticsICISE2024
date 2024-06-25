@@ -6,13 +6,13 @@ Once you have the Docker desktop installed, make sure it is running and download
 
 ![desktop](images/Docker.jpg)
 
+
 ## Python environment for CMS Open Data datasets 
 
 Obtain the `cms_python` container using, 
 
-
 ```bash
-docker run -it --name cms_python -P -p 8888:8888 -v ${HOME}/cms_open_data_python:/code gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
+docker run -it --name cms_python -P -p 8888:8888 gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
 ```
 
 Now that you're inside the container, run the following to get all of the necessary scripts and install some additional packages. 
@@ -39,6 +39,7 @@ pip install matplotlib
 ```
 
 You can exit the container at any time by typing `exit` in the terminal. 
+
 To restart the combine container, open a terminal and enter 
 ```bash
 docker start -i cms_combine
