@@ -99,4 +99,7 @@ From time to time, we will need to move files between containers or to our own c
 docker cp ~/Desktop/myfile.txt cms_python:/code/
 ```
 
-in a terminal on your local machine. You can also copy files from the containers to your local machine by reversing the order of the locations in the command above. 
+in a terminal on your local machine. You should see a message with the words ```Sucessfully copied ...``` if everything worked.  You can also copy files from the containers to your local machine by reversing the order of the locations in the command above, and you can copy files between containers. 
+
+!!! Warning 
+    With the way we are downloading and starting the containers, anything you create will still be there the next time you start the container. However, if you delete the container from Docker desktop then everything you did will be gone! You should make sure you copy any files/work you want to keep to your local computer using the `docker cp` commands above before you permenantly delete the containers. 
