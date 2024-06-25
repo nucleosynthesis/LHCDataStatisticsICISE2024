@@ -8,8 +8,6 @@ hide:
 This is the webpage for the lecture series on Data Analysis and Statistics at the LHC. In these pages, you can find links to the lectures as well as exercises for you to explore a typical data analysis at CMS. 
 You should be familiar with simple programming in Python, however, the examples should give you enough information to produce the desired output even if you don't know much Python. 
 
-You should start by downloading the Docker desktop for your laptop (click [here](https://www.docker.com/)). You will need to setup an account to do so. Follow the instructions for setting up the software that we'll be using at the [Getting started](https://nucleosynthesis.github.io/LHCDataStatisticsICISE2024/setup/) tab. This can take some time so please do this before the start of the lecture course. 
-
 There are four sets of exercises in these pages that you can find under the Exercises tab, one for each day of the course. You should read through the information given and copy code/commands where prompted into your own terminal or notebook. 
 
 !!! Question
@@ -37,7 +35,7 @@ Those labeled with **Bash**, indicate commands that can be typed into your Termi
 echo "Hello! I am in a bash terminal"
 ```
 
-and those with **Python** as the label indicate python code that can be run inside a Jupypter notebook
+and those with **Python** as the label indicate python code that can be run inside a Jupyter notebook
 ```python
 # This is python code
 def printHello():
@@ -47,9 +45,9 @@ printHello()
 
 For all of these, there is a copy icon in the top right that you can use to copy the entire contents of the block. 
 
-## Getting started 
+## Getting started (Pre-Course)
 
-We are going to need some software for the exercises. All of the software required is available pre-packaged in container images that you can run using Docker! Head over to the [Getting Started](https://nucleosynthesis.github.io/LHCDataStatisticsICISE2024/setup/) pages now to install Docker and obtain the relevant images. 
+We are going to need some software for the exercises. All of the software required is available pre-packaged in container images that you can run using Docker! Head over to the [Getting Started](https://nucleosynthesis.github.io/LHCDataStatisticsICISE2024/setup/) pages now to install Docker and obtain the relevant images. This can take some time so please do this **before** the start of the lecture course. 
 
 ## Useful Links 
 
