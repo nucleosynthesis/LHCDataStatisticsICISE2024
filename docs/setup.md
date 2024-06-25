@@ -1,8 +1,10 @@
-# Setup 
+# Getting Started
 
 To complete these exercises, we will be using two container images, with the software installed for you. In the examples here, we will use [Docker](https://www.docker.com/) to run the images. The Docker desktop is available for mac, windows and linux so follow the link and download the right installation for your personal laptop. You should start by downloading the Docker desktop for your laptop (click [here](https://www.docker.com/) and follow the instructions). You will need to setup an account to do so. 
 
-Once you have the Docker desktop installed, make sure it is running and download the two containers that we'll need for the exercises using the terminal commands below. Note that the Docker desktop has its own terminal if you prefer to use that. 
+Once you have the Docker desktop installed, make sure it is running and download the two containers that we'll need for the exercises using the terminal commands below. Note that the Docker desktop has its own terminal if you prefer to use that. If you are using a linux machine, be sure that you allow all users to access the Docker deamon otherwise you will need to add `sudo` to the start of your `docker run` commands. Below is what the Docker desktop looks like for Mac, where you can see which containers are running. 
+
+![desktop](images/Docker.jpg)
 
 ## Python environment for CMS Open Data datasets 
 
