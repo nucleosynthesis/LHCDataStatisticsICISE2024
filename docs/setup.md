@@ -58,6 +58,11 @@ where `XXXX` should be `8888` for the python container, and `8889` for the combi
 The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. The output will look similar to the one below, 
 ![Example output jlab](images/example_jl_launch.jpg)
 
+Or you can also run this command in the terminal ("Exec") from the dashboard from Docker desktop in either container like below, 
+
+![docker launch jlab](images/example_jl_docker.jpg)
+
+
 Copy one of the URL paths into the URL bar in your preferred browser. You should see something like the following. In this example I have  launched JupyterLab from inside the combine container, 
 
 ![Example JupyterLab](images/example_JL.jpg)
