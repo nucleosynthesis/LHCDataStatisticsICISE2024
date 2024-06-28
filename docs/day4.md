@@ -307,13 +307,62 @@ which tells `combine` to calculate the significance we would expect to see for a
 
 !!! Question 
     Calculate the luminosity scale factor that we would need in order for 
-    1. The expected limit to be smaller than the theoretical cross-section of 0.0118 pb, i.e how much data we need before we expect to be able to exclude this signal
-    2. The expected significance to reach 3-sigma, i.e how much data we would need before we expect to see strong evidence of a signal. 
+    1. The expected limit to be smaller than a cross-section of 1 pb
+    2. The expected significance to reach 3-sigma, i.e how much data we would need before we expect to see strong evidence of a signal with a cross section of 1 pb. 
+
+    For this question, you should remove the `autoMCStats` lines from the datacard. We know that these uncertainties should improve by simply generating more simulated events so we shouldn't include them in these projection studies. This is of course a real problem for experimental projections since we also need to make sure we have the computing available to simulate enough events - but that's a different topic!
 
 /// details | Solution 
-Below is a plot showing the  expected upper limit and the expected significance as a function of the `lumi_scale` value. 
-![lumiscale](images/)
+You can run the commands setting the value of `lumi_scale` to larger values with a simple bash for loop, for example, 
+```
+for i in 1 10 20 50 100 200 500 1000;  do combine combined_search.txt -M Significance  --expectSignal 1 -t -1 --setParameters lumi_scale=$i -n scale.$i; done 
+```
 
+Below is a plot showing the  expected upper limit and the expected significance as a function of the `lumi_scale` value. 
+![lumiscale](images/projections.png)
+
+The code used to make the plot is below, 
+```python
+import ROOT
+import matplotlib.pyplot as plt
+
+#  higgsCombinescale.10.AsymptoticLimits.mH120.root 
+#  higgsCombinescale.10.Significance.mH120.root      
+
+lsS = [1, 10, 20, 50, 100, 500, 1000]
+
+def getExpLim(f):
+    fi = ROOT.TFile.Open(f)
+    tr = fi.Get('limit')
+    tr.GetEntry(2) # for our command, entry 2 is the 50% limit
+    return tr.limit
+
+def getExpSig(f):
+    fi = ROOT.TFile.Open(f)
+    tr = fi.Get('limit')
+    tr.GetEntry(0) # for our command, entry 2 is the 50% limit
+    return tr.limit
+
+lim_y = []
+sig_y = []
+
+for ls in lsS:
+    lim_y.append(getExpLim("higgsCombinescale.%d.AsymptoticLimits.mH120.root"%ls))
+    sig_y.append(getExpSig("higgsCombinescale.%d.Significance.mH120.root"%ls))
+
+fig, (ax1,ax2) = plt.subplots(1,2,figsize=(14,6))
+ax1.plot(lsS,lim_y,color='black')
+ax1.set_xlabel("Luminosity Scaling")
+ax1.set_ylabel("Expected Upper Limit")
+ax1.axhline(1,color='red')
+ax1.set_yscale('log')
+
+ax2.plot(lsS,sig_y,color='black')
+ax2.set_xlabel("Luminosity Scaling")
+ax2.set_ylabel("Expected Significance")
+ax2.axhline(3,color='red')
+```
+///
 
 Very often, we use these expected sensitivities and projections at the LHC in order to design the most sensitive analyses and to determine future strategies for new particle physics experiments. Studies similar to the ones we've just done are in fact used in discussions for what to build (if anything) as the the next generation of particle collider and give us a roadmap towards future discoveries in particle physics!
 

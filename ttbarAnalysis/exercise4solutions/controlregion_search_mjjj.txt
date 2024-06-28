@@ -1,0 +1,22 @@
+imax 1
+jmax 5
+kmax 4
+# -----------------------------------------------------------------------------------------
+shapes data_obs controlregion tprime_1200GeV_search_allregions_mbjj.csv controlregion:data:nominal,sum_w:sum_ww
+shapes *        controlregion tprime_1200GeV_search_allregions_mbjj.csv controlregion:$PROCESS:nominal,sum_w:sum_ww controlregion:$PROCESS:$SYSTEMATIC,sum_w:sum_ww 
+# -----------------------------------------------------------------------------------------
+bin         controlregion
+observation -1
+# -----------------------------------------------------------------------------------------
+bin         controlregion controlregion       controlregion      controlregion  controlregion  controlregion
+process     ttbar         single_atop_t_chan  single_top_t_chan  single_top_tW  wjets          tprime 
+process     5             1                   2                  3              4              0 
+rate        -1            -1                  -1                 -1             -1             -1
+# -----------------------------------------------------------------------------------------
+wjets_norm rateParam controlregion wjets 1 [0,5]
+ttbar_norm rateParam controlregion ttbar 1 [0,5]
+lumi  lnN   0.023        0.023                0.023              0.023          -              1.023
+ideff lnN   1.01         1.01                 1.01               1.01           -              1.01
+btag  lnN   0.99         0.99                 0.99               0.99           0.99           0.99 
+jes   shape 1            1                    1                  1              1              1 
+controlregion autoMCStats 0
