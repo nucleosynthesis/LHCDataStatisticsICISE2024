@@ -429,7 +429,7 @@ combine combined.txt -M MultiDimFit --algo grid --points 50 --setParameterRanges
 and plot using similar code to before. The output should look like the following, 
 ![final scan](images/scan_r_final.png)
 
-All of the code to produce these results can be found under `exercise3solutions/Answers.ipynb`
+All of the code to produce these results can be found under `exercise3solutions/AnswersExercise3.ipynb`
 ///
 
 !!! tip "Challenge"
