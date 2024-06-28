@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#searching-for-a-new-signal" class="md-skip">
+        <a href="#exercise-4-searching-for-a-new-physics-signal" class="md-skip">
           Skip to content
         </a>
       
@@ -345,6 +345,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -373,6 +375,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -381,20 +385,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#searching-for-a-new-signal" class="md-nav__link">
+  <a href="#t-prime-simulation" class="md-nav__link">
     <span class="md-ellipsis">
-      Searching for a new signal
+      T-prime simulation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#information-for-signal-search" class="md-nav__link">
+  <a href="#t-prime-search-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Information for signal search
+      T-prime search analysis
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Statistical Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fit-of-tprimetprime-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fit of T^{\prime}T^{\prime} signal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upper-limit-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upper limit calculation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensitivity-projections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensitivity projections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -431,6 +477,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -439,20 +487,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#searching-for-a-new-signal" class="md-nav__link">
+  <a href="#t-prime-simulation" class="md-nav__link">
     <span class="md-ellipsis">
-      Searching for a new signal
+      T-prime simulation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#information-for-signal-search" class="md-nav__link">
+  <a href="#t-prime-search-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Information for signal search
+      T-prime search analysis
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Statistical Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fit-of-tprimetprime-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fit of T^{\prime}T^{\prime} signal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upper-limit-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upper limit calculation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensitivity-projections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensitivity projections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -471,18 +561,267 @@
                   
 
 
-<h2 id="searching-for-a-new-signal">Searching for a new signal</h2>
-<p>We are now going to change our analysis from a measurement of a cross-section to a search for a new particle. 
-In our final exercise (Exercise 4), we are going to </p>
-<h1 id="information-for-signal-search">Information for signal search</h1>
-<p>events = NanoEventsFactory.from_root(
-    "root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-1200_TuneCUETP8M1_13TeV-madgraph-pythia8_flat/5A744C3D-EA4C-4C35-9738-BF878E063562_flat.root",
-    , schemaclass=AGCSchema, treepath='events').events()</p>
-<p>filter_eff = 1 
-xsex = 0.0118 # pb for 1200 GeV Tprime 
-nevts_blah = 253993</p>
-<p>obsbins=np.arange(500,2050,80)</p>
-<p>lumi uncertainty in 2015 - 2.2% </p>
+<h1 id="exercise-4-searching-for-a-new-physics-signal">Exercise 4 - Searching for a New Physics Signal</h1>
+<p>Measuring signal rates and cross-sections is not the only kind of analysis at the LHC. Many analyses are designed to search for new physics / new particles that may be produced in our collision events. Often an analysis that starts out as a measurement of some SM process gets adapted into a search for some new hypothetical particle. </p>
+<p>We are going to modify our analysis from a measurement of the <span class="arithmatex"><span class="MathJax_Preview">t\bar{t}</span><script type="math/tex">t\bar{t}</script></span> cross-section to a search for a new particle - a <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> (pronounced "T prime"). Below is an example Feynman diagram for pair production of the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> particle. </p>
+<p><img alt="TPrime" src="../images/TprimeTprime.jpg" />. </p>
+<p>You can see that the decay products of the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> particles will involve top and bottom quarks (as well as vector bosons) so we should expect a similar final state as in our <span class="arithmatex"><span class="MathJax_Preview">t\bar{t}</span><script type="math/tex">t\bar{t}</script></span> cross-section measurement. This means that all of the data and simulated samples we used before can be re-used for this search! </p>
+<h2 id="t-prime-simulation">T-prime simulation</h2>
+<p>First, we will need to run over a simulated sample of <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> production. As is typical in searches for new physics, the model that we have in mind will have one or more parameters. In this case, the parameter is the mass of the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> particle. We will look for a <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> particle with a mass of 1.2 TeV. </p>
+<p>As usual, start the <code>cms_python</code> container and open Jupyter Lab with, </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker start -i cms_python
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>jupyter lab --ip 0.0.0.0 --port 8888 --no-browser
+</span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Add the new sample to your <code>ntuples.json</code> file with the information needed for the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal sample. </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>File path : &quot;root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-1200_TuneCUETP8M1_13TeV-madgraph-pythia8_flat/5A744C3D-EA4C-4C35-9738-BF878E063562_flat.root&quot;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Filter efficiency : 1
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Cross-section : 1 
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Number of events :253993 
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>filter_eff = 1
+</span></code></pre></div>
+</div>
+<details>
+<summary>Solution</summary>
+<p>I have added a new file <code>ntuples_with_tprime.json</code> with the new information added to the <code>exercise4solutions</code> folder. The extra information that should be added to the JSON looks like, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    &quot;tprime&quot;:{
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        &quot;xsec&quot;: 1,
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        &quot;filter_eff&quot;: 1.0,
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        &quot;nominal&quot;: {
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            &quot;files&quot;: [
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>                {
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                    &quot;path&quot;: &quot;root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-1200_TuneCUETP8M1_13TeV-madgraph-pythia8_flat/5A744C3D-EA4C-4C35-9738-BF878E063562_flat.root&quot;,
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>                    &quot;nevts&quot;: 253993
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>                }
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            ],
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            &quot;nevts_total&quot;: 253993
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        }
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    }
+</span></code></pre></div></p>
+</details>
+<p>Let's take a look at our observable <span class="arithmatex"><span class="MathJax_Preview">m_{bjj}</span><script type="math/tex">m_{bjj}</script></span> for the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span>. Copy the code below into a cell in a jupyter notebook to apply our signal selection (4j2b) to the signal sample. You should hopefully recognize this code as our signal region selection and observable calculation from earlier exercises. </p>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">uproot</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span> <span class="nn">awkward</span> <span class="k">as</span> <span class="nn">ak</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">from</span> <span class="nn">coffea.nanoevents</span> <span class="kn">import</span> <span class="n">NanoEventsFactory</span><span class="p">,</span> <span class="n">BaseSchema</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kn">from</span> <span class="nn">agc_schema</span> <span class="kn">import</span> <span class="n">AGCSchema</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">events</span> <span class="o">=</span> <span class="n">NanoEventsFactory</span><span class="o">.</span><span class="n">from_root</span><span class="p">(</span> 
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="s2">&quot;root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-1200_TuneCUETP8M1_13TeV-madgraph-pythia8_flat/5A744C3D-EA4C-4C35-9738-BF878E063562_flat.root&quot;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="p">,</span> <span class="n">schemaclass</span><span class="o">=</span><span class="n">AGCSchema</span><span class="p">,</span> <span class="n">treepath</span><span class="o">=</span><span class="s1">&#39;events&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">events</span><span class="p">()</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># Object selection</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">selected_electrons</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">electron</span><span class="p">[(</span><span class="n">events</span><span class="o">.</span><span class="n">electron</span><span class="o">.</span><span class="n">pt</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">electron</span><span class="o">.</span><span class="n">eta</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">2.1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">electron</span><span class="o">.</span><span class="n">isTight</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">electron</span><span class="o">.</span><span class="n">sip3d</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="p">)]</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="n">selected_muons</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">muon</span><span class="p">[(</span><span class="n">events</span><span class="o">.</span><span class="n">muon</span><span class="o">.</span><span class="n">pt</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">muon</span><span class="o">.</span><span class="n">eta</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">2.1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">muon</span><span class="o">.</span><span class="n">isTight</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">muon</span><span class="o">.</span><span class="n">sip3d</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">muon</span><span class="o">.</span><span class="n">pfreliso04DBCorr</span> <span class="o">&lt;</span> <span class="mf">0.15</span><span class="p">)]</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="n">selected_jets</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">jet</span><span class="p">[(</span><span class="n">events</span><span class="o">.</span><span class="n">jet</span><span class="o">.</span><span class="n">corrpt</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">jet</span><span class="o">.</span><span class="n">eta</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">2.4</span><span class="p">)</span> <span class="p">]</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1"># Event selection</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="n">event_filters</span> <span class="o">=</span> <span class="p">((</span><span class="n">ak</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">selected_electrons</span><span class="o">.</span><span class="n">pt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ak</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">selected_muons</span><span class="o">.</span><span class="n">pt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="c1"># Separate event selection into signal region and control region </span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="n">event_filters_SR</span> <span class="o">=</span> <span class="n">event_filters</span> <span class="o">&amp;</span>  <span class="p">(</span><span class="n">ak</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">selected_jets</span><span class="o">.</span><span class="n">corrpt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ak</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">selected_jets</span><span class="o">.</span><span class="n">btag</span> <span class="o">&gt;=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="n">selected_events_SR</span> <span class="o">=</span> <span class="n">selected_jets</span><span class="p">[</span><span class="n">event_filters_SR</span><span class="p">]</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="n">trijet</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">selected_events_SR</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;j1&quot;</span><span class="p">,</span> <span class="s2">&quot;j2&quot;</span><span class="p">,</span> <span class="s2">&quot;j3&quot;</span><span class="p">])</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="n">j1</span><span class="p">,</span><span class="n">j2</span><span class="p">,</span><span class="n">j3</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">unzip</span><span class="p">(</span><span class="n">trijet</span><span class="p">)</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="n">has_bjet</span> <span class="o">=</span> <span class="p">(</span><span class="n">ak</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j1</span><span class="o">.</span><span class="n">btag</span><span class="o">&gt;=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">ak</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j2</span><span class="o">.</span><span class="n">btag</span><span class="o">&gt;=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">ak</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j3</span><span class="o">.</span><span class="n">btag</span><span class="o">&gt;=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="n">trijet</span> <span class="o">=</span> <span class="n">trijet</span><span class="p">[</span><span class="n">has_bjet</span><span class="p">]</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="n">trijet</span><span class="p">[</span><span class="s2">&quot;p4&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trijet</span><span class="o">.</span><span class="n">j1</span> <span class="o">+</span> <span class="n">trijet</span><span class="o">.</span><span class="n">j2</span> <span class="o">+</span> <span class="n">trijet</span><span class="o">.</span><span class="n">j3</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="n">trijet_mass</span> <span class="o">=</span> <span class="n">trijet</span><span class="p">[</span><span class="s2">&quot;p4&quot;</span><span class="p">][</span><span class="n">ak</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">trijet</span><span class="o">.</span><span class="n">p4</span><span class="o">.</span><span class="n">pt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span><span class="o">.</span><span class="n">mass</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="n">observable</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">trijet_mass</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">observable</span><span class="p">,</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></code></pre></div>
+<p>You should see a distribution similar to the one below, </p>
+<p><img alt="signal" src="../images/tprimedist.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Compare the distribution of the observable to the one you would see for the <code>ttbar</code> simulation - is this what you expect. How would you modify the selection for the signal region to reduce the amount of <code>ttbar</code> background events?</p>
+</div>
+<details>
+<summary>Solution</summary>
+<p>If you run over the <code>ttbar</code> sample and compare the distribution from that and from the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal, you should see something like the figure below, </p>
+<p><img alt="signal vs ttbar" src="../images/signaldist.png" /></p>
+<p>It's clear that the value of <span class="arithmatex"><span class="MathJax_Preview">m_{bjj}</span><script type="math/tex">m_{bjj}</script></span> for the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> is much larger than for <span class="arithmatex"><span class="MathJax_Preview">t\bar{t}</span><script type="math/tex">t\bar{t}</script></span>. This is because the mass of the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> particle is much larger than that of a top quark and so the invariant mass of these decay products will be much larger too. From the distributions, selecting events with <span class="arithmatex"><span class="MathJax_Preview">m_{bjj}&gt; 500</span><script type="math/tex">m_{bjj}> 500</script></span> GeV will significantly reduce the amount of <span class="arithmatex"><span class="MathJax_Preview">t\bar{t}</span><script type="math/tex">t\bar{t}</script></span> background while keeping most of the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal. </p>
+</details>
+<h2 id="t-prime-search-analysis">T-prime search analysis</h2>
+<p>We need to modify our Analysis notebook to perform the search for the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> particle. Most of the notebook will stay the same, except that we should change the bins for our observable to better suit the search for the new signal. We can do this by modifying the <code>bins</code> array in the notebook, </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>obsbins=np.arange(500,2080,80)
+</span></code></pre></div>
+<p>Since we expect the invariant masses of events from the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> events to be much larger than our SM processes. </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Adapt your analysis notebook to include the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal. Remember to, 
+1. Include the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal sample in your <code>ntuples.json</code> and modify the observable range to something more suitable for the search for the new particle. 
+2. Include both the signal region (4j2b) and  control region (4j0b) in your processing - the signal will appear in both but you should find a lot less signal in the 4j0b region.
+3. You might wish to name the output <code>.csv</code> something different to avoid overwriting your previous work.
+4. Remember to also include the distributions for <code>jesUp</code> and <code>jesDown</code> for all of the simulated samples. </p>
+<p>You can start from the notebook I provided in <code>exercise2solutions/FullAnalysisWithControlRegion.ipynb</code> if you prefer. </p>
+</div>
+<details>
+<summary>Solution</summary>
+<p>I have put a notebook under <code>exercise4solutions/SearchAnalysis.ipynb</code> which will produce a <code>.csv</code> file called <code>tprime_1200GeV_search_allregions_mbjj.csv</code>, that contains the histograms for data and simulation in the signal and control regions. the notebook will produce the figures below showing the distributions with this modified selection, 
+<img alt="searcsr" src="../images/search_mbjj_signalregion.png" /><img alt="searchcr" src="../images/search_mbjj_controlregion.png" /></p>
+</details>
+<h2 id="statistical-search">Statistical Search</h2>
+<p>Now that we have the new histograms, we are nearly ready to do some statistical calculations to test if our data is compatible with there being a <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal with a mass of 1.2 TeV in it. The way we typically do this is by calculating an upper limit on the amount of new signal (<code>r</code>) present in the data. We'll need to use the <code>combine</code> software for this, so start the <code>cms_combine</code> container, </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker start -i cms_combine
+</span></code></pre></div>
+<p>We need to modify our datacards. We need to point to the new <code>.csv</code> file that we created and we need to tell <code>combine</code> that our "signal" this time is the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> process and the <span class="arithmatex"><span class="MathJax_Preview">t\bar{t}</span><script type="math/tex">t\bar{t}</script></span> is now a background process. Remember that in the datacards, any process with an ID <span class="arithmatex"><span class="MathJax_Preview">\leq</span><script type="math/tex">\leq</script></span> 0 is considered as a signal, and will be scaled with the signal strength parameter <code>r</code>.  We need to add a new columnd to the <code>process</code> lines for the <code>tprime</code> process with the ID 0. We also should add a column for each of the systematic uncertainty lines. </p>
+<p>We should also allow the <code>ttbar</code> process to freely float in the fit. To do this, we add another <code>rateParam</code> line to introduce another parameter that will scale the <code>ttbar</code> process, separately from the <code>wjets_norm</code> and <code>r</code> parameters. Finally, remember to increase the value of <code>jmax</code> by 1 since we now have one additional background process (since the <span class="arithmatex"><span class="MathJax_Preview">t\bar{t}</span><script type="math/tex">t\bar{t}</script></span> is now a background). </p>
+<p>Below is what the signal region datacard should now look like, </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>imax 1
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>jmax 5
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kmax 4
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>shapes data_obs signalregion tprime_1200GeV_search_allregions_mbjj.csv signalregion:data:nominal,sum_w:sum_ww
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>shapes *        signalregion tprime_1200GeV_search_allregions_mbjj.csv signalregion:$PROCESS:nominal,sum_w:sum_ww signalregion:$PROCESS:$SYSTEMATIC,sum_w:sum_ww 
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>bin         signalregion
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>observation -1
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>bin         signalregion  signalregion        signalregion       signalregion   signalregion  signalregion
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>process     ttbar         single_atop_t_chan  single_top_t_chan  single_top_tW  wjets         tprime 
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>process     5             1                   2                  3              4             0 
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>rate        -1            -1                  -1                 -1             -1            -1 
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>wjets_norm rateParam signalregion wjets 1 [0,5]
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>ttbar_norm rateParam signalregion ttbar 1 [0,5]
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>lumi  lnN   1.023        1.023                1.023              1.023          -             1.023
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>ideff lnN   1.01         1.01                 1.01               1.01           -             1.01
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>btag  lnN   1.03         1.03                 1.03               1.03           1.03          1.03
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>jes   shape 1            1                    1                  1              1             1 
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>signalregion autoMCStats 0  
+</span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>We also need to update the control region datacard. Make the appropriate changes to the control region datacard, similarly to what we changed for the signal region datacard. </p>
+</div>
+<details>
+<summary>Solution</summary>
+<p>The control region datacard should look like the following, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>imax 1
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>jmax 5
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>kmax 4
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>shapes data_obs controlregion tprime_1200GeV_search_allregions_mbjj.csv controlregion:data:nominal,sum_w:sum_ww
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>shapes *        controlregion tprime_1200GeV_search_allregions_mbjj.csv controlregion:$PROCESS:nominal,sum_w:sum_ww controlregion:$PROCESS:$SYSTEMATIC,sum_w:sum_ww 
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>bin         controlregion
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>observation -1
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>bin         controlregion controlregion       controlregion      controlregion  controlregion  controlregion
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>process     ttbar         single_atop_t_chan  single_top_t_chan  single_top_tW  wjets          tprime 
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>process     5             1                   2                  3              4              0 
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>rate        -1            -1                  -1                 -1             -1             -1
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a># -----------------------------------------------------------------------------------------
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>wjets_norm rateParam controlregion wjets 1 [0,5]
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>ttbar_norm rateParam controlregion ttbar 1 [0,5]
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>lumi  lnN   0.023        0.023                0.023              0.023          -              1.023
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>ideff lnN   1.01         1.01                 1.01               1.01           -              1.01
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>btag  lnN   0.99         0.99                 0.99               0.99           0.99           0.99 
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>jes   shape 1            1                    1                  1              1              1 
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>controlregion autoMCStats 0
+</span></code></pre></div></p>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Challenge</p>
+<p>Instead of letting the <code>ttbar</code> process float freely, use our previous measurement to constrain the rate within the uncertainty we obtained from Exercise 3. To do this you could use a <code>lnN</code> type uncertainty or add a <code>param</code> constraint term to the <code>ttbar_norm</code> parameter as described <a href="https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part2/settinguptheanalysis/#unbinned-or-parametric-shape-analyses">here</a>. </p>
+</div>
+<h3 id="fit-of-tprimetprime-signal">Fit of <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal</h3>
+<p>Now let's run our fit again on the combined regions, but this time our measured signal strength <code>r</code> will correspond to the amount of <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal, relative to the input cross-section. In our case, we set the cross-section to 1pb so the value of <code>r</code> directly corresponds to the measured cross-section in data. 
+If you didn't manage to run your notebook for the previous section, you can use the <code>tprime_1200GeV_search_allregions_mbjj.csv</code> file I provided in the <code>exercise4solutions</code> folder.  </p>
+<p>First, combine the datacards (you may have different names for your datacards) 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>combineCards.py<span class="w"> </span><span class="nv">signalregion</span><span class="o">=</span>signalregion_search_mbjj.txt<span class="w"> </span><span class="nv">controlregion</span><span class="o">=</span>controlregion_search_mjjj.txt<span class="w"> </span>&gt;<span class="w"> </span>combined_search.txt
+</span></code></pre></div></p>
+<p>And we run the fit as usual, 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>combine<span class="w"> </span>combined_search.txt<span class="w"> </span>-M<span class="w"> </span>FitDiagnostics<span class="w"> </span>--saveShapes<span class="w"> </span>--saveWithUncert<span class="w"> </span>-n<span class="w"> </span>Search<span class="w"> </span>--cminDefaultMinimizerStrategy<span class="w"> </span><span class="m">0</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p>Note, I recommend adding the option <code>--cminDefaultMinimizerStrategy 0</code> as above to make this run faster. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the code terminates with the message "<code>Segmentation fault</code>", then run the following command in your terminal to fix it, 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">ulimit</span><span class="w"> </span>-s<span class="w"> </span>unlimited<span class="p">;</span><span class="w"> </span><span class="nb">ulimit</span><span class="w"> </span>-u<span class="w"> </span>unlimited
+</span></code></pre></div></p>
+</div>
+<p>You should see something like the following, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a> --- FitDiagnostics ---
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Best fit r: 8.8185e-06  -8.8185e-06/+1.02713  (68% CL)
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Done in 0.33 min (cpu), 0.33 min (real)
+</span></code></pre></div></p>
+<p>So the fitted signal strength <code>r</code> is basically 0 - sadly no sign of the new physics signal in our data! We can instead set upper limits on how much signal would have to be there, before we would be able to detect it in the data. </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Plot the post-fit distributions from the output of the previous command. Would  you expect the fit for the signal plus background to be different to the one for the background only? Why?</p>
+</div>
+<details>
+<summary>Solution</summary>
+<p>We can re-use code from Exercise 3, but use the file <code>fitDiagnosticsSearch.root</code>. You should see something like the plots below, </p>
+<p><img alt="Search post-fit" src="../images/postfit_search.png" /></p>
+<p>Since the fitted signal strength was very close to 0, we expect the background only fit (fixing <code>r</code>=0) to be the same as the signal plus background (letting <code>r</code> float in the fit) fit. </p>
+</details>
+<h3 id="upper-limit-calculation">Upper limit calculation</h3>
+<p>We can calculate an upper limit on the cross-section (in pb) using <code>combine</code> with the <code>AsymptoticLimits</code> method. To do this, we can run the following command in the terminal, </p>
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>combine<span class="w"> </span>combined_search.txt<span class="w"> </span>-M<span class="w"> </span>AsymptoticLimits<span class="w"> </span>
+</span></code></pre></div>
+<p>which should yield something like the following output,</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a> -- AsymptoticLimits ( CLs ) --
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Observed Limit: r &lt; 5.2495
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Expected  2.5%: r &lt; 6.9236
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>Expected 16.0%: r &lt; 9.2728
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>Expected 50.0%: r &lt; 12.9375
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>Expected 84.0%: r &lt; 18.2492
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>Expected 97.5%: r &lt; 24.5932
+</span></code></pre></div>
+<p>Let's break this down. The first line tells us that the calculation is based on the <code>CLs</code> criterion which we saw in the lectures - by default, this command runs 95% confidence level (CL) upper limits. The Observed limit tells us that the 95% CL upper limit is about 5.25. Remember that the signal strength in our setup is normalised so that <code>r=1</code> corresponds to 1 pb, the upper limit tells us that we can exclude (at the 95% confidence level) a <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal with mass of 1.2 GeV with a cross-section larger than 5.25 pb, given the data we saw. </p>
+<p>We also see additional results for the <em>Expected limits</em>. These numbers tell us how much signal we would expect to exclude in the data. Remember that upper limits are in fact random values, and so we can think about the distribution of upper limits. The values shown indicate the median of that distribution and several quantiles. The Median expected upper limit (<code>Expected 50.0%</code>) is around 13pb, which tells us that our data had quite a large under-fluctuation compared to what we would have expected, which allows us to set a better limit than what we would have expected! </p>
+<p>In fact, for this particular signal, we would expect (theoretically) a cross-section of about 0.0118 pb so we certainly cannot have expected to exclude this signal given our dataset size since 0.0118 <span class="arithmatex"><span class="MathJax_Preview">&lt;&lt;</span><script type="math/tex"><<</script></span> 13. We can see how much more data we would need to collect before we expect to exclude (or even discover!) this signal  </p>
+<h3 id="sensitivity-projections">Sensitivity projections</h3>
+<p>We can add one more <code>rateParam</code> to our datacards which will scale all of our processes by a given value. Add the following lines to your combined datacard, </p>
+<p><div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>lumi_scale    rateParam * * 1
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>nuisance edit freeze lumi_scale
+</span></code></pre></div>
+The first line tells <code>combine</code> to introduce an additional parameter that scales all processes in all channels (this is what <code>* *</code> means) by the value of <code>lumi_scale</code>, with a default value of 1. We can set this value to anything in the command line later. The second line tells <code>combine</code> to freeze this parameter - we do not want it to float in our fits. </p>
+<p>Now let's see what the expected upper limits would be if we increase our data sample size (value of luminosity scaling <code>lumi_scale</code>) by a factor of 10, 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>combine<span class="w"> </span>combined_search.txt<span class="w"> </span>-M<span class="w"> </span>AsymptoticLimits<span class="w"> </span>--setParameters<span class="w"> </span><span class="nv">lumi_scale</span><span class="o">=</span><span class="m">10</span><span class="w"> </span>--run<span class="w"> </span>blind<span class="w"> </span>
+</span></code></pre></div>
+Note that we only want to run the expected value for these projection studies. The option <code>--run blind</code> tells <code>combine</code> to ignore the data. 
+Now we will see something like the following, </p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a> -- AsymptoticLimits ( CLs ) --
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Expected  2.5%: r &lt; 2.8890
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Expected 16.0%: r &lt; 3.8540
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>Expected 50.0%: r &lt; 5.3594
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Expected 84.0%: r &lt; 7.4743
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>Expected 97.5%: r &lt; 9.9902
+</span></code></pre></div>
+<p>The Median expected limit is now 5.3 pb, much smaller than before! As we expected, more data means a better  expected upper limit. We can also calculate the expected significance for 10x the amount of data, using a similar command, </p>
+<p><div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>combine<span class="w"> </span>combined_search.txt<span class="w"> </span>-M<span class="w"> </span>Significance<span class="w">  </span>--expectSignal<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span>-1<span class="w"> </span>--setParameters<span class="w"> </span><span class="nv">lumi_scale</span><span class="o">=</span><span class="m">10</span>
+</span></code></pre></div>
+which tells <code>combine</code> to calculate the significance we would expect to see for a signal where we have 10x as much data. </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Calculate the luminosity scale factor that we would need in order for 
+1. The expected limit to be smaller than the theoretical cross-section of 0.0118 pb, i.e how much data we need before we expect to be able to exclude this signal
+2. The expected significance to reach 3-sigma, i.e how much data we would need before we expect to see strong evidence of a signal. </p>
+</div>
+<details>
+<summary>Solution</summary>
+<p>Below is a plot showing the  expected upper limit and the expected significance as a function of the <code>lumi_scale</code> value. 
+<img alt="lumiscale" src="images/" /></p>
+<p>Very often, we use these expected sensitivities and projections at the LHC in order to design the most sensitive analyses and to determine future strategies for new particle physics experiments. Studies similar to the ones we've just done are in fact used in discussions for what to build (if anything) as the the next generation of particle collider and give us a roadmap towards future discoveries in particle physics!</p>
+<div class="admonition tip">
+<p class="admonition-title">Challenge</p>
+<p>For the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> search analysis, we chose to use the <span class="arithmatex"><span class="MathJax_Preview">m_{bjj}</span><script type="math/tex">m_{bjj}</script></span> observable in the range <span class="arithmatex"><span class="MathJax_Preview">500--2000</span><script type="math/tex">500--2000</script></span> GeV, based on the distribution we saw for the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">t\bar{t}</span><script type="math/tex">t\bar{t}</script></span> samples. In real analyses, we typically optimize the selection and observable choice based on the sensitivity to the signal we are looking for. Try and find a better range for the observable, or if you have already started the machine learning lectures, why not try to train a machine learning model to separate the signal from the backgrounds and use the output from that to search for the <span class="arithmatex"><span class="MathJax_Preview">T^{\prime}</span><script type="math/tex">T^{\prime}</script></span> signal. Can you find a more sensitive way to perform the search? You could use the expected upper limit as in the calculation above, or the expected significance as your metric for the sensitivity. To calculate the <em>expected</em> significance, you can use the command below, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>combine combined_search.txt  -M Significance --expectSignal 1 -t -1 
+</span></code></pre></div></p>
+</div>
+</details>
 
 
 
