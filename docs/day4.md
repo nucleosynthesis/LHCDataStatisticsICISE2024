@@ -342,7 +342,7 @@ def getExpLim(f):
 def getExpSig(f):
     fi = ROOT.TFile.Open(f)
     tr = fi.Get('limit')
-    tr.GetEntry(0) # for our command, entry 2 is the 50% limit
+    tr.GetEntry(0) # for our command, entry 0 is the significance
     return tr.limit
 
 lim_y = []
