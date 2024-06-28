@@ -314,12 +314,14 @@ which tells `combine` to calculate the significance we would expect to see for a
 
 /// details | Solution 
 You can run the commands setting the value of `lumi_scale` to larger values with a simple bash for loop, for example, 
-```
+```sh
 for i in 1 10 20 50 100 200 500 1000;  do combine combined_search.txt -M Significance  --expectSignal 1 -t -1 --setParameters lumi_scale=$i -n scale.$i; done 
 ```
 
 Below is a plot showing the  expected upper limit and the expected significance as a function of the `lumi_scale` value. 
 ![lumiscale](images/projections.png)
+
+From the figures, we would be able to exclude the $T^{\prime}$ signal with a cross section 1 pb with about 250 times as much data, and obtain strong evidence with 450 times as much. Unfortunately, our signal has a cross-section with a much smaller cross-section - 0.0118 pb so we would need to greatly improve the analysis rather than simply collect more data to reach a good sensitivity to it!
 
 The code used to make the plot is below, 
 ```python
@@ -366,6 +368,7 @@ ax2.axhline(3,color='red')
 
 Very often, we use these expected sensitivities and projections at the LHC in order to design the most sensitive analyses and to determine future strategies for new particle physics experiments. Studies similar to the ones we've just done are in fact used in discussions for what to build (if anything) as the the next generation of particle collider and give us a roadmap towards future discoveries in particle physics!
 
+You can find all of the datacards used for this exercise in the `exercise4solutions` folder. 
 
 !!! tip "Challenge" 
     For the $T^{\prime}$ search analysis, we chose to use the $m_{bjj}$ observable in the range $500--2000$ GeV, based on the distribution we saw for the $T^{\prime}$ and $t\bar{t}$ samples. In real analyses, we typically optimize the selection and observable choice based on the sensitivity to the signal we are looking for. Try and find a better range for the observable, or if you have already started the machine learning lectures, why not try to train a machine learning model to separate the signal from the backgrounds and use the output from that to search for the $T^{\prime}$ signal. Can you find a more sensitive way to perform the search? You could use the expected upper limit as in the calculation above, or the expected significance as your metric for the sensitivity. To calculate the *expected* significance, you can use the command below, 
