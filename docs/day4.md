@@ -125,8 +125,8 @@ Since we expect the invariant masses of events from the $T^{\prime}$ events to b
     You can start from the notebook I provided in `exercise2solutions/FullAnalysisWithControlRegion.ipynb` if you prefer. 
 
 /// details | Solution 
-I have put a notebook under `exercise4solutions/SearchAnalysis.ipynb` which will produce a `.csv` file called `tprime_1200GeV_search_allregions_mbjj.csv`, that contains the histograms for data and simulation in the signal and control regions. the notebook will produce the figures below showing the distributions with this modified selection, 
-![searcsr](images/search_mbjj_signalregion.png)![searchcr](images/search_mbjj_controlregion.png)
+I have put a notebook under `exercise4solutions/SearchAnalysis.ipynb` which will produce a `.csv` file called `tprime_1200GeV_search_allregions_mbjj.csv`, that contains the histograms for data and simulation in the signal and control regions. the notebook will produce something like the figure below showing the distributions with this modified selection, 
+![search dists](images/search_combined_plot.jpg)
 ///
 
 ## Statistical Search 
