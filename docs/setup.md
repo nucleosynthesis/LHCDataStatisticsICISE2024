@@ -6,6 +6,9 @@ Once you have the Docker desktop installed, make sure it is running and download
 
 ![desktop](images/Docker.jpg)
 
+!!! Warning 
+    To obtain the containers, we need to use a terminal on your laptop. Mac / Linux users can just use the standard terminal for this. Windows users should use Powershell. Alternatively, if you have the latest version of Docker Desktop, you will find a terminal icon at the bottom of the window that will open a terminal (see below). You can also use this one to obtain the containers. Once you have the container, you can use the terminal inside the container environment (best is in the jupyter notebook). 
+![betaterm](images/betaterm.jpg)
 
 ## Python environment for CMS Open Data datasets 
 
