@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -583,6 +583,11 @@
 <p>To complete these exercises, we will be using two container images, with the software installed for you. In the examples here, we will use <a href="https://www.docker.com/">Docker</a> to run the images. The Docker desktop is available for mac, windows and linux so follow the link and download the right installation for your personal laptop. You should start by downloading the Docker desktop for your laptop (click <a href="https://www.docker.com/">here</a> and follow the instructions). You will need to setup an account to do so. </p>
 <p>Once you have the Docker desktop installed, make sure it is running and download the two containers that we'll need for the exercises using the terminal commands below. Note that the Docker desktop has its own terminal if you prefer to use that. If you are using a linux machine, be sure that you allow all users to access the Docker deamon otherwise you will need to add <code>sudo</code> to the start of your <code>docker run</code> commands. Below is what the Docker desktop looks like for Mac, where you can see which containers are running. </p>
 <p><img alt="desktop" src="../images/Docker.jpg" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To obtain the containers, we need to use a terminal on your laptop. Mac / Linux users can just use the standard terminal for this. Windows users should use Powershell. Alternatively, if you have the latest version of Docker Desktop, you will find a terminal icon at the bottom of the window that will open a terminal (see below). You can also use this one to obtain the containers. Once you have the container, you can use the terminal inside the container environment (best is in the jupyter notebook). </p>
+</div>
+<p><img alt="betaterm" src="images/betaterm.jpg" /></p>
 <h2 id="python-environment-for-cms-open-data-datasets">Python environment for CMS Open Data datasets</h2>
 <p>Obtain the <code>cms_python</code> container using, </p>
 <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>cms_python<span class="w"> </span>-P<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/python-vnc:python3.10.5
@@ -731,7 +736,7 @@ You can do this in both of the containers but you don't need to install this for
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
