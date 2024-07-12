@@ -1,6 +1,6 @@
 # Lecture notes 
 
-Follow the links for each day's lecture notes 
+Follow the links for each day's lecture notes. The links are password protected, the password will be given in the first lecture.  
 
    - [Lecture 1](https://cernbox.cern.ch/s/fL0eVRQ1i1FDGKA)
    - [Lecture 2](https://cernbox.cern.ch/s/FM5sJyKk1vyue6r)
