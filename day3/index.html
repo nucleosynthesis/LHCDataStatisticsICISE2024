@@ -976,7 +976,13 @@ and plot using similar code to before. The output should look like the following
 <p class="admonition-title">Challenge</p>
 <ol>
 <li>Calculate the uncertainty on <code>r</code> only considering statistical uncertainties and when also including systematic ones. This will involve freezing some of the parameters of the model to their maximum likelihood estimates - you can refer to information <a href="https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part3/commonstatsmethods/#fitting-only-some-parameters">here</a> on how this can be done. </li>
-<li>From the fit result contained in the file, you can find a correlation matrix (its a ROOT TH2F) from the fit. Using this, find the covariance matrix of the estimators for the parameters that results from the fit. </li>
+<li>From the fit result contained in the file, you can obtain a covariance matrix at the maximum of the likelihood using some code below, 
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>import ROOT
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>fi = ROOT.TFile.Open(&quot;fitDiagnosticsTest.root&quot;)
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>obj = fi.Get(&quot;fit_s&quot;)
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>obj.correlationMatrix().Print()
+</span></code></pre></div>
+Which parameters are most strongly correlated with the signal strenght <code>r</code>?</li>
 </ol>
 </div>
 
