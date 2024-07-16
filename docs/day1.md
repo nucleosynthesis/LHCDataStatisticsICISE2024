@@ -412,6 +412,7 @@ I have created a simple conversion function for you to use in the file `hist2df.
 You can convert a histogram created with the matplotlib `hist` function to a dataframe using this function as follows, 
 
 ```python
+from hist2df import *
 weights =  plt.hist(observable,bins=np.arange(50,575,25))
 dfs = histogramToDataframe(weights[0],"signalregion","ttbar")
 ```
