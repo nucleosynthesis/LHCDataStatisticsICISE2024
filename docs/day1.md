@@ -397,7 +397,7 @@ From this information, you can now calculate the event weight for each of the si
 def getEventWeight(sample,file_index):
     lumi = 2256.38 # inv pb 
     if sample != "data":
-        xsec_weight = metadata[sample]['filter_eff'] * metadata[sample]['xsec'] * lumi / metadata[sample]['nominal'][file_index]['nevts']
+        xsec_weight = metadata[sample]['filter_eff'] * metadata[sample]['xsec'] * lumi / metadata[sample]['nominal']['files'][file_index]['nevts']
     else:
         xsec_weight = 1
     return xsec_weight
