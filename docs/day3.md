@@ -295,6 +295,7 @@ This will give a figure similar to the following,
 
 ![jes effects](images/jes_effects.png)
 
+
 ### Monte-carlo (MC) statistics uncertainties. 
 
 Finally, we also need to account for the fact that our simulated samples (Monte-carlo or MC) have a limited number of events available to create the histograms. This leads to a statistical uncertainty on the histograms that are used in the fits. `combine` can take care of these for us by using the `sum_ww` column that we included in our dataframes. We just need to add the following line to the datacard, 
@@ -433,4 +434,5 @@ All of the code to produce these results can be found under `exercise3solutions/
 ///
 
 !!! tip "Challenge"
-    Calculate the uncertainty on `r` only considering statistical uncertainties and when also including systematic ones. This will involve freezing some of the parameters of the model to their maximum likelihood estimates - you can refer to information [here](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part3/commonstatsmethods/#fitting-only-some-parameters) on how this can be done. 
+    1. Calculate the uncertainty on `r` only considering statistical uncertainties and when also including systematic ones. This will involve freezing some of the parameters of the model to their maximum likelihood estimates - you can refer to information [here](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part3/commonstatsmethods/#fitting-only-some-parameters) on how this can be done. 
+    2. From the fit result contained in the file, you can find a correlation matrix (its a ROOT TH2F) from the fit. Using this, find the covariance matrix of the estimators for the parameters that results from the fit. 
