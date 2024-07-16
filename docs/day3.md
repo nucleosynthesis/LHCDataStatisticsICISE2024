@@ -435,4 +435,11 @@ All of the code to produce these results can be found under `exercise3solutions/
 
 !!! tip "Challenge"
     1. Calculate the uncertainty on `r` only considering statistical uncertainties and when also including systematic ones. This will involve freezing some of the parameters of the model to their maximum likelihood estimates - you can refer to information [here](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/part3/commonstatsmethods/#fitting-only-some-parameters) on how this can be done. 
-    2. From the fit result contained in the file, you can find a correlation matrix (its a ROOT TH2F) from the fit. Using this, find the covariance matrix of the estimators for the parameters that results from the fit. 
+    2. From the fit result contained in the file, you can obtain a covariance matrix at the maximum of the likelihood using some code below, 
+    ```pyROOT
+    import ROOT
+    fi = ROOT.TFile.Open("fitDiagnosticsTest.root")
+    obj = fi.Get("fit_s")
+    obj.correlationMatrix().Print()
+    ```
+    Which parameters are most strongly correlated with the signal strenght `r`?
