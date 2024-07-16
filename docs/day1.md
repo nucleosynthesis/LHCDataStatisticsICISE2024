@@ -293,6 +293,9 @@ To do this, we simply need to make two new fields in our `selected_events` jets 
 ```python
 selected_events['scaleUp'] = selected_events.corrptUp/selected_events.corrpt
 ```
+
+Remember to do this *before* you create the trijet combinations!
+
 Now, we can scale the jets in our selected trijets by this scale-factor. We can use the `multiply` method to scale each component of the jet four-vectors by their `scaleUp` and use these new four-vectors to calculate the observable.  
 
 ```python
