@@ -242,7 +242,7 @@ $$
 \zeta_{r} =2 (q(r) - q(\hat{r})) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 $$
 
-where the $\hat{\cdot}$ notation means the maximum likelihood estimate (or best-fit) and the subscript and where $\nu$ represents our nuisance parameters. In this case, we only have one such nuisance parameter which is `wjets_norm`. The value $\hat{\nu}_{r}$ is the value of $\nu$ for that maximises the likelihood when $r$ is fixed to a specific value - sometimes we call this the conditional maximum likelihood. 
+where the $\hat{\cdot}$ notation means the maximum likelihood estimate (or best-fit) and the subscript and where $\nu$ representsall of the remaining parameters of the model (we will learn about these in lectures, we call them "nuisance parameters"). In this case, we only have one such remaining parameter which is `wjets_norm`. The value $\hat{\nu}_{r}$ is the value of $\nu$ for that maximises the likelihood when $r$ is fixed to a specific value - we often call this the conditional maximum likelihood. 
 
 `combine` can calculate this quantity as a function of our parameter $r$ using the `-M MultiDimFit` method and the `grid` algo with the command, 
 
