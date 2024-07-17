@@ -294,7 +294,7 @@ The scan where the rate of `wjets` is allowed to float is much wider than the or
 
 ## Goodness-of-fit 
 
-Instead of comparing our data/simulation plots by eye, we can use a measure of the Goodness-of-fit. In lectures we learned about hypothesis testing. `combine` has several routines for calculating a goodness-of-fit, but we will just use the so called `saturated` test for an idea of the fit quality. 
+Instead of comparing our data/simulation plots by eye, we can use a measure of the Goodness-of-fit. In the  lectures we will learn about hypothesis testing, but for now just thing of this calculation as a number that tells us how well our post-fit distribution agrees with the data. `combine` has several routines for calculating a goodness-of-fit, but we will just use the so called `saturated` test for an idea of the fit quality. 
 
 The test-statistic for a template model is, 
 
