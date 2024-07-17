@@ -236,10 +236,10 @@ We can estimate this uncertainty more accurately by scanning the *profiled log-l
 
 ## Likelihood scans
 
-Remember in the lectures, we define a quantity $q(r)$ as the following, 
+Remember in the lectures, we define a quantity $\zeta_{r}$ as the following, 
 
 $$
-q(r) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
+\zeta_{r} =2 (q(r) - q(\hat{r})) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 $$
 
 where the $\hat{\cdot}$ notation means the maximum likelihood estimate (or best-fit) and the subscript and where $\nu$ represents our nuisance parameters. In this case, we only have one such nuisance parameter which is `wjets_norm`. The value $\hat{\nu}_{r}$ is the value of $\nu$ for that maximises the likelihood when $r$ is fixed to a specific value - sometimes we call this the conditional maximum likelihood. 
@@ -255,7 +255,7 @@ The option `--points` tells combine how many evenly spaced points at which to ev
 !!! Warning 
     If you run the `combine` command twice, the output file will be overwritten. By adding the option `-n name`, you can avoid this as the word `Test` will be modified to `name` that you specify. Use this to keep track of different results.  
 
-This file contains a `TTree` that stores the values of $r$ and $0.5\times q(r)$ in its branches. In the python file `root2py.py` I have included a function to convert these into python arrays for you. You can plot the value of $q(r)$ using one of the blocks of code below, depending on if you prefer pyROOT or straight python. 
+This file contains a `TTree` that stores the values of $r$ and $0.5\times \zeta_{r}$ in its branches. In the python file `root2py.py` I have included a function to convert these into python arrays for you. You can plot the value of $\zeta_{r}$ using one of the blocks of code below, depending on if you prefer pyROOT or straight python. 
 
 
 === "python"
