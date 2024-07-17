@@ -759,13 +759,13 @@ Now we see that the fit would prefer to scale up the <code>wjets</code> process 
 <p>You may have noticed that in addition to the best fit value, <code>combine</code> reports an uncertainty <code>+/-</code>. We will cover what we mean by uncertainty in the lectures, but this uncertainty is estimated by using the inverse of the Hessian matrix from the fit result. From this alone, we can see that by including an additional parameter, the uncertainty on our best fit for <code>r</code> has increased. Generally, we expect that adding freedom to the fit will increase the uncertainty of our results but improve the overall agreement in our data/simulation plots.  </p>
 <p>We can estimate this uncertainty more accurately by scanning the <em>profiled log-likelihood</em> and comparing this for the two cases; with and without the <code>wjets_norm</code> parameter. </p>
 <h2 id="likelihood-scans">Likelihood scans</h2>
-<p>Remember in the lectures, we define a quantity <span class="arithmatex"><span class="MathJax_Preview">q(r)</span><script type="math/tex">q(r)</script></span> as the following, </p>
+<p>Remember in the lectures, we define a quantity <span class="arithmatex"><span class="MathJax_Preview">\zeta_{r}</span><script type="math/tex">\zeta_{r}</script></span> as the following, </p>
 <div class="arithmatex">
 <div class="MathJax_Preview">
-q(r) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
+\zeta_{r} =2 (q(r) - q(\hat{r})) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 </div>
 <script type="math/tex; mode=display">
-q(r) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
+\zeta_{r} =2 (q(r) - q(\hat{r})) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 </script>
 </div>
 <p>where the <span class="arithmatex"><span class="MathJax_Preview">\hat{\cdot}</span><script type="math/tex">\hat{\cdot}</script></span> notation means the maximum likelihood estimate (or best-fit) and the subscript and where <span class="arithmatex"><span class="MathJax_Preview">\nu</span><script type="math/tex">\nu</script></span> represents our nuisance parameters. In this case, we only have one such nuisance parameter which is <code>wjets_norm</code>. The value <span class="arithmatex"><span class="MathJax_Preview">\hat{\nu}_{r}</span><script type="math/tex">\hat{\nu}_{r}</script></span> is the value of <span class="arithmatex"><span class="MathJax_Preview">\nu</span><script type="math/tex">\nu</script></span> for that maximises the likelihood when <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> is fixed to a specific value - sometimes we call this the conditional maximum likelihood. </p>
@@ -777,7 +777,7 @@ q(r) = -2\ln \frac{L(r,\hat{\nu}_{r})}{L(\hat{r},\hat{\nu})}
 <p class="admonition-title">Warning</p>
 <p>If you run the <code>combine</code> command twice, the output file will be overwritten. By adding the option <code>-n name</code>, you can avoid this as the word <code>Test</code> will be modified to <code>name</code> that you specify. Use this to keep track of different results.  </p>
 </div>
-<p>This file contains a <code>TTree</code> that stores the values of <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> and <span class="arithmatex"><span class="MathJax_Preview">0.5\times q(r)</span><script type="math/tex">0.5\times q(r)</script></span> in its branches. In the python file <code>root2py.py</code> I have included a function to convert these into python arrays for you. You can plot the value of <span class="arithmatex"><span class="MathJax_Preview">q(r)</span><script type="math/tex">q(r)</script></span> using one of the blocks of code below, depending on if you prefer pyROOT or straight python. </p>
+<p>This file contains a <code>TTree</code> that stores the values of <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> and <span class="arithmatex"><span class="MathJax_Preview">0.5\times \zeta_{r}</span><script type="math/tex">0.5\times \zeta_{r}</script></span> in its branches. In the python file <code>root2py.py</code> I have included a function to convert these into python arrays for you. You can plot the value of <span class="arithmatex"><span class="MathJax_Preview">\zeta_{r}</span><script type="math/tex">\zeta_{r}</script></span> using one of the blocks of code below, depending on if you prefer pyROOT or straight python. </p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">python</label><label for="__tabbed_2_2">pyROOT</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
