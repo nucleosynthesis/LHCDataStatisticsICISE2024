@@ -40,6 +40,13 @@ If you like to make plots with python instead of using ROOT, then you should als
 ```sh
 pip install matplotlib 
 ```
+You may find that you get errors when importing matplotlib. If that happens, a solution seems to be to uninstall and re-install numpy with
+
+```sh
+pip uninstall numpy
+pip install matplotlib
+pip install numpy
+```
 
 You can exit the container at any time by typing `exit` in the terminal. 
 
