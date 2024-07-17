@@ -624,14 +624,19 @@
 </span></code></pre></div>
 <p>If you like to make plots with python instead of using ROOT, then you should also install <code>matplotlib</code> inside this container by running the following command in the terminal inside the container. 
 <div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+You may find that you get errors when importing matplotlib. If that happens, a solution seems to be to uninstall and re-install numpy with</p>
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>numpy
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>pip<span class="w"> </span>install<span class="w"> </span>numpy
+</span></code></pre></div>
 <p>You can exit the container at any time by typing <code>exit</code> in the terminal. </p>
 <p>To restart the combine container, open a terminal and enter 
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>start<span class="w"> </span>-i<span class="w"> </span>cms_combine
 </span></code></pre></div></p>
 <h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
 <p>As much as possible, we will use Juptyer notebooks to write and run code for these exercises. You can launch JupterLab from either of the two containers by using the following command inside the terminal after starting the container. </p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span>XXXX<span class="w"> </span>--no-browser
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span>XXXX<span class="w"> </span>--no-browser
 </span></code></pre></div>
 <p>where <code>XXXX</code> should be <code>8888</code> for the python container, and <code>8889</code> for the combine container. </p>
 <p>The output will give you a link that you can paste in your preferred internet browser to open the JupyterLab environment. The output will look similar to the one below, 
@@ -655,12 +660,12 @@
 </div>
 <h3 id="csv-files">CSV files</h3>
 <p>Since our data structures will be mostly Pandas dataframes, you might want to install the Jupyter spreadsheet editor that allows you to both view and edit CSV files, 
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab-spreadsheet-editor
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab-spreadsheet-editor
 </span></code></pre></div>
 You can do this in both of the containers but you don't need to install this for the exercises.</p>
 <h2 id="moving-files-around">Moving files around</h2>
 <p>From time to time, we will need to move files between containers or to our own computers. You can do this by downloading the file from the browser (right click on a file in the file browser and select "download") or you can use the <code>docker cp</code> tool. For example to transfer a file called "myfile.txt" from your local desktop to the <code>cms_python</code> container, you can run, </p>
-<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>cp<span class="w"> </span>~/Desktop/myfile.txt<span class="w"> </span>cms_python:/code/
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>cp<span class="w"> </span>~/Desktop/myfile.txt<span class="w"> </span>cms_python:/code/
 </span></code></pre></div>
 <p>in a terminal on your local machine. You should see a message with the words <code>Sucessfully copied ...</code> if everything worked.  You can also copy files from the containers to your local machine by reversing the order of the locations in the command above, and you can copy files between containers. </p>
 <div class="admonition warning">
