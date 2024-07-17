@@ -622,13 +622,14 @@
 <p>Obtain the <code>cms_combine</code> container using, </p>
 <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:8889:8889<span class="w"> </span>--name<span class="w"> </span>cms_combine<span class="w"> </span>-it<span class="w"> </span>gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1-slim
 </span></code></pre></div>
-<p>If you like to make plots with python instead of using ROOT, then you should also install <code>matplotlib</code> inside this container by running the following command in the terminal inside the container. 
-<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>
+<p>If you like to make plots with python instead of using ROOT, then you should also install <code>matplotlib</code> and upgrade <code>numpy</code> inside this container by running the following command in the terminal inside the container. 
+<div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.24.0
 </span></code></pre></div>
 You may find that you get errors when importing matplotlib. If that happens, a solution seems to be to uninstall and re-install numpy with</p>
 <div class="language-sh highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>numpy
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>pip<span class="w"> </span>install<span class="w"> </span>numpy
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.24.0
 </span></code></pre></div>
 <p>You can exit the container at any time by typing <code>exit</code> in the terminal. </p>
 <p>To restart the combine container, open a terminal and enter 
