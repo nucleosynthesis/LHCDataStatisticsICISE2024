@@ -147,7 +147,7 @@ Notice that for the `btag` uncertainty, there should be an entry for the `wjets`
 
 Some uncertainties in will affect both the overall rate of a particular process *and its shape*. For these uncertainties, we need to provide alternative histograms that represent the shape of a process when we vary some aspect of our model up and down. Remember, when we created our `.csv` files, we created histograms where we shifted the jet energy scale up and down by its uncertainty, resulting from uncertainties in the jet calibrations. Let's take a look at these distributions for the `ttbar` process. You can use the following code in a notebook to plot these distributions, 
 
-```
+```python
 import matplotlib.pyplot as plt 
 import pandas as pd 
 
